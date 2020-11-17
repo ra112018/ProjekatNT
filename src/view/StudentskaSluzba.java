@@ -1,26 +1,15 @@
 package view;
 
 
+
 public class StudentskaSluzba {
 
 	
 	public static void main(String[] args) {
 
-		// provera da li postoji uneta vrednost ulaznog argumenta
-		if (args.length != 0) {
+		GlavniProzor glavniP = new GlavniProzor();
+		glavniP.setVisible(true);
 
-			int param = 0;
-			String arg0 = args[0];
-			try {
-				param = Integer.parseInt(arg0);
-			} catch (Exception e) {
-				System.out.println("Neispravna vrednost ulaznog parametra");
-				System.exit(0);
-			}
-		} else {
-			//Ovde se piše kod
-
-		}
 
 	}
 
