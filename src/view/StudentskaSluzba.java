@@ -18,7 +18,8 @@ public class StudentskaSluzba {
 				System.exit(0);
 			}
 		} else {
-			//Ovde se piše kod
+			//Ovde se piše kod.
+			
 
 		}
 
