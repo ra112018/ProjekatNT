@@ -1,12 +1,17 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+
+
+
 public class GlavniProzor extends JFrame{
 		
+
 	public GlavniProzor() {
 		
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -17,5 +22,12 @@ public class GlavniProzor extends JFrame{
 		setTitle("Studentska služba");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		MyMenuBar menu = new MyMenuBar();
+		this.setJMenuBar(menu);
+		
+		ToolBar toolbar = new ToolBar();
+		add(toolbar, BorderLayout.NORTH);
 	}
 }
