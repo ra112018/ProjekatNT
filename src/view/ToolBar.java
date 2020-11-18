@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,12 +39,14 @@ public class ToolBar extends JToolBar {
 		add(btnBrisanje);
         btnBrisanje.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        
+  
+        addSeparator(new Dimension(690,10));
         
 		JTextField searchInput = new JTextField(15);
 		searchInput.setMaximumSize(searchInput.getPreferredSize());
 		add(searchInput);
 		
+		addSeparator();
 		
 		JButton pretrazi = new JButton();
 		pretrazi.setToolTipText("Pretrazi");
