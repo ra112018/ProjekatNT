@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 
 public class MyMenuBar extends JMenuBar {
 
-	private static final long serialVersionUID = -7863806568418316202L;
+	private static final long serialVersionUID = 1L;
 
 	public MyMenuBar() {
 
@@ -16,11 +16,11 @@ public class MyMenuBar extends JMenuBar {
 		add(file);
 
 		JMenuItem miNew = new JMenuItem("New", 'n');
-		miNew.setIcon(new ImageIcon("images/new.png"));
+		miNew.setIcon(new ImageIcon("images/new.jpg"));
 		file.add(miNew);
 
 		JMenuItem miClose = new JMenuItem("Close",'c');
-		miClose.setIcon(new ImageIcon("images/x.png"));
+		miClose.setIcon(new ImageIcon("images/x.jpg"));
 		file.add(miClose);
 		
 		JMenu edit = new JMenu("Edit");
@@ -28,11 +28,11 @@ public class MyMenuBar extends JMenuBar {
 		add(edit);
 
 		JMenuItem miEdit=new JMenuItem("Edit",'e');
-		miEdit.setIcon(new ImageIcon("images/edit.png"));
+		miEdit.setIcon(new ImageIcon("images/edit.jpg"));
 		edit.add(miEdit);
 
 		JMenuItem miDelete=new JMenuItem("Delete",'d');
-		miDelete.setIcon(new ImageIcon("images/delete.png"));
+		miDelete.setIcon(new ImageIcon("images/deletemb.jpg"));
 		edit.add(miDelete);
 
 		JMenu help = new JMenu("Help");
@@ -40,11 +40,11 @@ public class MyMenuBar extends JMenuBar {
 		add(help);
 
 		JMenuItem miHelp=new JMenuItem("Help",'h');
-		miHelp.setIcon(new ImageIcon("images/help.png"));
+		miHelp.setIcon(new ImageIcon("images/help.jpg"));
 		help.add(miHelp);
 
 		JMenuItem miAbout=new JMenuItem("About",'a');
-		miAbout.setIcon(new ImageIcon("images/about.png"));
+		miAbout.setIcon(new ImageIcon("images/aboutmb.jpg"));
 		help.add(miAbout);
 
 
