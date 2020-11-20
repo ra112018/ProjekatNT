@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Profesor {
 	
 	
@@ -13,7 +16,27 @@ public class Profesor {
 	private String brojLicneKarteProf;
 	private String titulaProf;
 	private String zvanjeProf; 
-	//lista predmeta
+	private List<Predmet> predmetiProf = null;
+	
+	public Profesor (String prezimeProf, String imeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
+			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
+			String titulaProf, String zvanjeProf, List<Predmet> predmetiProf) {
+		
+		super();
+		
+		this.prezimeProf = prezimeProf;
+		this.imeProf = imeProf;
+		this.datumRodjenjaProf = datumRodjenjaProf;
+		this.adresaStanovanjaProf = adresaStanovanjaProf;
+		this.kontaktTelefonProf = kontaktTelefonProf;
+		this.eMailAdresaProf = eMailAdresaProf;
+		this.adresaKancelarijeProf = adresaKancelarijeProf;
+		this.brojLicneKarteProf = brojLicneKarteProf;
+		this.titulaProf = titulaProf;
+		this.zvanjeProf = zvanjeProf;
+		this.predmetiProf = predmetiProf;
+	}
+	
 	
 	public Profesor (String prezimeProf, String imeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
 			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
@@ -31,7 +54,7 @@ public class Profesor {
 		this.brojLicneKarteProf = brojLicneKarteProf;
 		this.titulaProf = titulaProf;
 		this.zvanjeProf = zvanjeProf;
-		//predmeti
+		predmetiProf = new ArrayList<Predmet>();
 	}
 
 	public String getPrezimeProf() {
@@ -112,6 +135,14 @@ public class Profesor {
 
 	public void setZvanjeProf(String zvanjeProf) {
 		this.zvanjeProf = zvanjeProf;
+	}
+
+	public List<Predmet> getPredmeti() {
+		return predmetiProf;
+	}
+
+	public void setPredmeti(List<Predmet> predmetiProf) {
+		this.predmetiProf = predmetiProf;
 	}
 	
 	
