@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -40,7 +41,7 @@ public class ToolBar extends JToolBar {
         btnBrisanje.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
   
-        addSeparator(new Dimension(690,10));
+        add(Box.createHorizontalGlue());
         
 		JTextField searchInput = new JTextField(15);
 		searchInput.setMaximumSize(searchInput.getPreferredSize());
