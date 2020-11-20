@@ -7,11 +7,11 @@ public class StudentskaSluzba {
 	
 	public static void main(String[] args) {
 
-<<<<<<< HEAD
+
 		GlavniProzor glavniP = new GlavniProzor();
 		glavniP.setVisible(true);
 
-=======
+
 		// provera da li postoji uneta vrednost ulaznog argumenta
 		if (args.length != 0) {
 
@@ -28,7 +28,7 @@ public class StudentskaSluzba {
 			
 
 		}
->>>>>>> 4628238ccd848dc24cbfe8320719cf2a2356978d
+
 
 	}
 
