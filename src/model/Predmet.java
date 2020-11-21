@@ -5,13 +5,13 @@ public class Predmet {
 	private String sifraPredmeta;
 	private String nazivPredmeta;
 	private String semestar;
-	private String godinaStudija;			
+	private Integer godinaStudija;			
 	private String predmetniProfesor;
 	private Integer brojESPB;
 	//lista studenata koji su polozili predmet
 	//lista studenata koji nisu polozili predmet
 	
-	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
+	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, Integer godinaStudija,
 			String predmetniProfesor, Integer brojESPB) {
 		
 		super();
@@ -47,11 +47,11 @@ public class Predmet {
 		this.semestar = semestar;
 	}
 
-	public String getGodinaStudija() {
+	public Integer getGodinaStudija() {
 		return godinaStudija;
 	}
 
-	public void setGodinaStudija(String godinaStudija) {
+	public void setGodinaStudija(Integer godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 
