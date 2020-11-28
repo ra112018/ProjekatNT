@@ -11,6 +11,11 @@ import javax.swing.JFrame;
 
 public class GlavniProzor extends JFrame{
 		
+	/**REFERENCA: Radjeno po uzoru na Vezbe, Termin3 */
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public GlavniProzor() {
 		

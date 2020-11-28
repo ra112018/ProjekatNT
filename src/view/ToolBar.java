@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -14,6 +13,12 @@ import javax.swing.SwingConstants;
 
 public class ToolBar extends JToolBar {
 		
+	/**REFERENCA: Radjeno po uzoru na Vezbe,Termin3 */
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ToolBar() {
 		
 		super(SwingConstants.HORIZONTAL);
