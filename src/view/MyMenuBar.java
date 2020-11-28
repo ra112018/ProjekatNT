@@ -7,9 +7,6 @@ import javax.swing.KeyStroke;
 
 import java.awt.event.KeyEvent;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 
 public class MyMenuBar extends JMenuBar {

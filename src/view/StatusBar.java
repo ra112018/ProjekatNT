@@ -1,86 +1,59 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import javax.swing.JComponent;
-public class StatusBar extends JPanel {
+import javax.swing.BorderFactory;
 
-		/**
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class StatusBar extends JPanel {
+	
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = kit.getScreenSize();
-		int screenWidth = screenSize.width;
-        protected JPanel leftPanel;
-        protected JPanel rightPanel;
-
-        public StatusBar() {
-            createPartControl();
-        }
-
-        protected void createPartControl() {    
-            setLayout(new BorderLayout());
-            super.setPreferredSize(new Dimension(screenWidth /4*3, 30));
-
-            leftPanel = new JPanel(new FlowLayout(FlowLayout.LEADING, 5, 3));
-            leftPanel.setOpaque(false);
-            add(leftPanel, BorderLayout.WEST);
-
-            rightPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING, 5, 3));
-            rightPanel.setOpaque(false);
-            add(rightPanel, BorderLayout.EAST);
-        }
-        public void setLeftComponent(JComponent component) {
-            leftPanel.add(component);
+	/**
+	 * 
+	 */
+	JLabel naziv;
+    JLabel vreme;
+    
+    
+	
+    public StatusBar() {
+    	
+    	GridBagConstraints gbc = new GridBagConstraints();  
+    	
+    	GridBagLayout grid=new GridBagLayout();		/* https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html*/
+    	this.setOpaque(true);
+        this.setBackground(Color.WHITE);
+        this.setLayout(grid) ;
+        this.setBorder(BorderFactory.createLineBorder(Color.black)); /*https://docs.oracle.com/javase/8/docs/api/javax/swing/BorderFactory.html*/
+        //this.set
+        naziv = new JLabel(" Studentska služba");
+        naziv.setFont(new Font("Calibri", Font.PLAIN, 14));
+        this.add(naziv,gbc);       
+        
+        vreme = new JLabel();
+        
+        LocalDateTime myDateObj = LocalDateTime.now();   
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH:mm   dd.MM.yyyy.");  
+        
+        String formattedDate = myDateObj.format(myFormatObj);  
+        
+        vreme.setText(formattedDate);
+        vreme.setFont(new Font("Calibri", Font.PLAIN, 14));
+        gbc.weightx=1.0;
+        gbc.anchor=GridBagConstraints.EAST;
+        this.add(vreme,gbc);
+        
     }
-        public void addRightComponent(JComponent component) {
-            JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING, 5, 0));
-            panel.add(component);
-            rightPanel.add(panel);
-        }
+		
+    
 
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-
-            int y = 0;
-            g.setColor(new Color(156, 154, 140));
-            g.drawLine(0, y, getWidth(), y);
-            y++;
-
-            g.setColor(new Color(196, 194, 183));
-            g.drawLine(0, y, getWidth(), y);
-            y++;
-
-            g.setColor(new Color(218, 215, 201));
-            g.drawLine(0, y, getWidth(), y);
-            y++;
-
-            g.setColor(new Color(233, 231, 217));
-            g.drawLine(0, y, getWidth(), y);
-
-            y = getHeight() - 3;
-            g.setColor(new Color(233, 232, 218));
-            g.drawLine(0, y, getWidth(), y);
-            y++;
-
-            g.setColor(new Color(233, 231, 216));
-            g.drawLine(0, y, getWidth(), y);
-            y++;
-
-            g.setColor(new Color(221, 221, 220));
-            g.drawLine(0, y, getWidth(), y);
-        }
-        
-        
-      
-
-       
 }
