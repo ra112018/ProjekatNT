@@ -22,12 +22,14 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem miNew = new JMenuItem("New", KeyEvent.VK_N);
 		miNew.setIcon(new ImageIcon("images/new.jpg"));
 		file.add(miNew);
+		miNew.setMnemonic('n');
 		KeyStroke ctrlNKeyStroke = KeyStroke.getKeyStroke("control N");
 	    miNew.setAccelerator(ctrlNKeyStroke);
 
 		JMenuItem miClose = new JMenuItem("Close",KeyEvent.VK_C);
 		miClose.setIcon(new ImageIcon("images/x.jpg"));
 		file.add(miClose);
+		miClose.setMnemonic('c');
 		KeyStroke ctrlCKeyStroke = KeyStroke.getKeyStroke("control C");
 	    miClose.setAccelerator(ctrlCKeyStroke);
 		
@@ -38,6 +40,8 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem miEdit=new JMenuItem("Edit",KeyEvent.VK_E);
 		miEdit.setIcon(new ImageIcon("images/edit.jpg"));
 		edit.add(miEdit);
+		miEdit.setMnemonic('e');
+
 	    KeyStroke ctrlEKeyStroke = KeyStroke.getKeyStroke("control E");
 	    miEdit.setAccelerator(ctrlEKeyStroke);							//deo koda preuzet sa http://www.java2s.com/Tutorials/Java/Swing/Menu/Set_Accelerator_key_for_JMenuItem_in_Java.htm
 
@@ -45,6 +49,7 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem miDelete=new JMenuItem("Delete",KeyEvent.VK_D);
 		miDelete.setIcon(new ImageIcon("images/deletemb.jpg"));
 		edit.add(miDelete);
+		miDelete.setMnemonic('d');
 		KeyStroke ctrlDKeyStroke = KeyStroke.getKeyStroke("control D");
 	    miDelete.setAccelerator(ctrlDKeyStroke);	
 	    
@@ -55,12 +60,14 @@ public class MyMenuBar extends JMenuBar {
 		JMenuItem miHelp=new JMenuItem("Help",KeyEvent.VK_H);
 		miHelp.setIcon(new ImageIcon("images/help.jpg"));
 		help.add(miHelp);
+		miHelp.setMnemonic('h');
 		KeyStroke ctrlHKeyStroke = KeyStroke.getKeyStroke("control H");
 	    miHelp.setAccelerator(ctrlHKeyStroke);	
 
 		JMenuItem miAbout=new JMenuItem("About",KeyEvent.VK_A);
 		miAbout.setIcon(new ImageIcon("images/aboutmb.jpg"));
 		help.add(miAbout);
+		miAbout.setMnemonic('a');
 		KeyStroke ctrlAKeyStroke = KeyStroke.getKeyStroke("control A");
 	    miAbout.setAccelerator(ctrlAKeyStroke);	
 
