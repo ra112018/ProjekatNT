@@ -9,13 +9,23 @@ import javax.swing.JFrame;
 
 
 
+
 public class GlavniProzor extends JFrame{
 		
-	/**REFERENCA: Radjeno po uzoru na Vezbe, Termin3 */
+	/**REFERENCA: Radjeno po uzoru na Vezbe, Termin3, JTableMVCSimple */
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private static GlavniProzor instance = null;
+
+	public static GlavniProzor getInstance() {
+		if (instance == null) {
+			instance = new GlavniProzor();
+		}
+		return instance;
+	}
 
 	public GlavniProzor() {
 		
