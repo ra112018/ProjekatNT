@@ -29,7 +29,7 @@ public class BazaPredmeta {
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Sifra predmeta");
 		this.kolone.add("Naziv predmeta");
-		this.kolone.add("Broj ESP bodova");
+		this.kolone.add("Broj ESPB bodova");
 		this.kolone.add("Godina studija");
 		this.kolone.add("Semestar");
 
