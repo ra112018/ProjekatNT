@@ -1,10 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 
 
@@ -26,6 +30,8 @@ public class GlavniProzor extends JFrame{
 		}
 		return instance;
 	}
+	
+	private JTable tabelaProfesori;
 
 	public GlavniProzor() {
 		
@@ -38,6 +44,10 @@ public class GlavniProzor extends JFrame{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		getContentPane().setLayout(new BorderLayout(0,0));
+		
+		prikaziTabove();
+		
 		
 		MyMenuBar menu = new MyMenuBar();
 		this.setJMenuBar(menu);
@@ -47,5 +57,25 @@ public class GlavniProzor extends JFrame{
 		
 		StatusBar statusBar = new StatusBar();
 		getContentPane().add(statusBar,BorderLayout.SOUTH);
+	}
+	
+	/**REFERENCA: Radjeno po uzoru na https://www.tutorialspoint.com/how-to-add-a-tab-in-jtabbedpane-with-java
+	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/JTabbedPane.html*/
+	private void prikaziTabove() {
+		JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
+		tab.setBackground(Color.WHITE);
+		getContentPane().add(tab, BorderLayout.CENTER);
+		
+		tabelaProfesori = new JTableProfesor();
+		tabelaProfesori.getTableHeader().setReorderingAllowed(false);
+		tabelaProfesori.setAutoCreateRowSorter(true);
+		JScrollPane scrollProfesori = new JScrollPane(tabelaProfesori);
+		tab.addTab("Profesori", null, scrollProfesori, null);
+		
+	    
+		
+		
+		
+		
 	}
 }

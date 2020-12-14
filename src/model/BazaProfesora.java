@@ -18,40 +18,31 @@ public class BazaProfesora {
 		return instance;
 	}
 
-	private long generator;
 	
 	private List<Profesor> profesori;
 	private List<String> kolone;
 	
 	private BazaProfesora() {
-		generator = 0;
 	
 		initProfesori();
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Ime");
 		this.kolone.add("Prezime");
-		this.kolone.add("Datum rodjenja");
-		this.kolone.add("Adresa stanovanja");
-		this.kolone.add("Kontakt telefon");
-		this.kolone.add("Email adresa");
-		this.kolone.add("Adresa kancelarije");
-		this.kolone.add("Broj licne karte");
 		this.kolone.add("Titula");
 		this.kolone.add("Zvanje");
 
 	}
 	
+	
 	private void initProfesori() {
 		this.profesori = new ArrayList<Profesor>();
-		//profesori.add(new Profesor(generateId(), "Mika", "Mikic", "OMP"));
+		profesori.add(new Profesor("Mika", "Mikic", "2.5.1987.", "Njegoseva 2", "021 556 748", "mika.mikic@gmail.com", "DO 6", "938204826", "Dr", "Redovni profesor"));
+		profesori.add(new Profesor("Ana", "Anic", "6.7.1978.", "Njegoseva 7", "021 376 768", "ana.anic@gmail.com", "DO 6", "37843257", "Dr", "Redovni profesor"));
 		//profesori.add(new Profesor(generateId(), "Zika", "Zikic", "FMP"));
 		//profesori.add(new Profesor(generateId(), "Pera", "Peric", "OKK Sabac"));
 	}
 	
-	private long generateId() {
-		return ++generator;
-	}
 	
 	public List<Profesor> getProfesor() {
 		return profesori;
@@ -127,5 +118,6 @@ public class BazaProfesora {
 		profesor.setZvanjeProf(zvanje);
 		
 	}
+	
 	
 }
