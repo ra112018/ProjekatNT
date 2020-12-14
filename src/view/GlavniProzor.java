@@ -32,6 +32,8 @@ public class GlavniProzor extends JFrame{
 	}
 	
 	private JTable tabelaProfesori;
+	private JTable tabelaPredmeti;
+	
 
 	public GlavniProzor() {
 		
@@ -62,6 +64,7 @@ public class GlavniProzor extends JFrame{
 	/**REFERENCA: Radjeno po uzoru na https://www.tutorialspoint.com/how-to-add-a-tab-in-jtabbedpane-with-java
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/JTabbedPane.html*/
 	private void prikaziTabove() {
+		
 		JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
 		tab.setBackground(Color.WHITE);
 		getContentPane().add(tab, BorderLayout.CENTER);
@@ -73,7 +76,11 @@ public class GlavniProzor extends JFrame{
 		tab.addTab("Profesori", null, scrollProfesori, null);
 		
 	    
-		
+		tabelaPredmeti = new JTablePredmet();
+		tabelaPredmeti.getTableHeader().setReorderingAllowed(false);
+		tabelaPredmeti.setAutoCreateRowSorter(true);
+		JScrollPane scrollPredmeti = new JScrollPane(tabelaPredmeti);
+		tab.addTab("Predmeti", null, scrollPredmeti, null);
 		
 		
 		

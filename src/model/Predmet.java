@@ -5,14 +5,26 @@ public class Predmet {
 	private String sifraPredmeta;
 	private String nazivPredmeta;
 	private String semestar;
-	private Integer godinaStudija;			
-	private Profesor predmetniProfesor;
-	private Integer brojESPB;
+	private String godinaStudija;			
+	private String predmetniProfesor;
+	private String brojESPB;
 	//lista studenata koji su polozili predmet
 	//lista studenata koji nisu polozili predmet
 	
-	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, Integer godinaStudija,
-			Profesor predmetniProfesor, Integer brojESPB) {
+	public Predmet (String sifraPredmeta, String nazivPredmeta, String brojESPB, String godinaStudija,
+			String semestar) {
+		
+		super();
+		this.sifraPredmeta = sifraPredmeta;
+		this.nazivPredmeta = nazivPredmeta;
+		this.brojESPB = brojESPB;
+		this.godinaStudija = godinaStudija;
+		this.semestar = semestar;
+			
+	}
+	
+	public Predmet (String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
+			String predmetniProfesor, String brojESPB) {
 		
 		super();
 		this.sifraPredmeta = sifraPredmeta;
@@ -22,6 +34,7 @@ public class Predmet {
 		this.predmetniProfesor = predmetniProfesor;
 		this.brojESPB = brojESPB;
 	}
+	
 
 	public String getSifraPredmeta() {
 		return sifraPredmeta;
@@ -47,27 +60,27 @@ public class Predmet {
 		this.semestar = semestar;
 	}
 
-	public Integer getGodinaStudija() {
+	public String getGodinaStudija() {
 		return godinaStudija;
 	}
 
-	public void setGodinaStudija(Integer godinaStudija) {
+	public void setGodinaStudija(String godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 
-	public Profesor getPredmetniProfesor() {
+	public String getPredmetniProfesor() {
 		return predmetniProfesor;
 	}
 
-	public void setPredmetniProfesor(Profesor predmetniProfesor) {
+	public void setPredmetniProfesor(String predmetniProfesor) {
 		this.predmetniProfesor = predmetniProfesor;
 	}
 
-	public Integer getBrojESPB() {
+	public String getBrojESPB() {
 		return brojESPB;
 	}
 
-	public void setBrojESPB(Integer brojESPB) {
+	public void setBrojESPB(String brojESPB) {
 		this.brojESPB = brojESPB;
 	}
 	

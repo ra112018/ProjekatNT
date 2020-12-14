@@ -17,31 +17,31 @@ public class BazaPredmeta {
 		return instance;
 	}
 	
-	private long generator;
 	
 	private List<Predmet> predmeti;
 	private List<String> kolone;
 	
 	private BazaPredmeta() {
-		generator = 0;
+
 	
 		initPredmeti();
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Sifra predmeta");
 		this.kolone.add("Naziv predmeta");
-		this.kolone.add("Semestar");
-		this.kolone.add("Godina studija");
-		this.kolone.add("Predmetni profesor");
 		this.kolone.add("Broj ESP bodova");
+		this.kolone.add("Godina studija");
+		this.kolone.add("Semestar");
+
+		
 
 	}
 	
 	private void initPredmeti() {
 		this.predmeti = new ArrayList<Predmet>();
-		//igraci.add(new Igrac(generateId(), "Mika", "Mikic", "Crvena Zvezda"));
-		//igraci.add(new Igrac(generateId(), "Zika", "Zikic", "FMP"));
-		//igraci.add(new Igrac(generateId(), "Pera", "Peric", "OKK Sabac"));
+		predmeti.add(new Predmet("20", "OISISI", "8", "3", "5"));
+		predmeti.add(new Predmet("10", "NANS", "4", "3", "5"));
+
 	}
 	
 	public List<Predmet> getPredmet() {
@@ -50,10 +50,6 @@ public class BazaPredmeta {
 
 	public void setPredmet(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
-	}
-
-	private long generateId() {
-		return ++generator;
 	}
 
 	public int getColumnCount() {
@@ -76,30 +72,24 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
-			return predmet.getSemestar();
+			return predmet.getBrojESPB();
 		case 3:
-			return Integer.toString(predmet.getGodinaStudija());
+			return predmet.getGodinaStudija();
 		case 4:
-			Profesor prof = predmet.getPredmetniProfesor();
-			if(prof==null) {
-				return "Profesor nije dodat";
-			}
-			return prof.getImeProf() + " " + prof.getPrezimeProf();
-		case 5:
-			return Integer.toString(predmet.getBrojESPB());
+			return predmet.getSemestar();
 		default:
 			return null;
 		}
 	}
 
-	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, String semestar, Integer godinaStudija,
-			Profesor predmetniProfesor, Integer brojESPBodova) {
+	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
+			String predmetniProfesor, String brojESPBodova) {
 		
 		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija, predmetniProfesor, brojESPBodova));
 	}
 	
-	public void izmeniPredmet(int row, String sifraPredmeta, String nazivPredmeta, String semestar, Integer godinaStudija,
-			Profesor predmetniProfesor, Integer brojESPBodova) {
+	public void izmeniPredmet(int row, String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
+			String predmetniProfesor, String brojESPBodova) {
 		
 		Predmet predmet = BazaPredmeta.getInstance().getRow(row);
 		

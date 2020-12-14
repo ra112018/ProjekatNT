@@ -7,32 +7,22 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
-
-
 /**REFERENCA: Radjeno po uzoru na https://www.javatpoint.com/java-jtable 
  * https://docs.oracle.com/javase/tutorial/uiswing/components/table.html*/
 
-public class JTableProfesor extends JTable {
+public class JTablePredmet extends JTable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static JTableProfesor instance = null;
-	public static JTableProfesor getInstance() {
-		if(instance==null) {
-			instance = new JTableProfesor();
-		}
-		
-		return instance;
-	}
 
-	public JTableProfesor() {
+	public JTablePredmet() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelProfesor());
+		this.setModel(new AbstractTableModelPredmeti());
 		
 	}
 	
@@ -50,7 +40,6 @@ public class JTableProfesor extends JTable {
 		
 		return comp;
 	}
-	
-	
+ 
 	
 }

@@ -18,6 +18,17 @@ public class Profesor {
 	private String zvanjeProf; 
 	private List<Predmet> predmetiProf = null;
 	
+	public Profesor (String imeProf, String prezimeProf, String titulaProf, String zvanjeProf) {
+		
+		super();
+		
+		this.imeProf = imeProf;
+		this.prezimeProf = prezimeProf;
+		this.titulaProf = titulaProf;
+		this.zvanjeProf = zvanjeProf;
+
+	}
+	
 	public Profesor (String prezimeProf, String imeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
 			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
 			String titulaProf, String zvanjeProf, List<Predmet> predmetiProf) {

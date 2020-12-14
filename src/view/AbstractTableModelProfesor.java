@@ -43,6 +43,7 @@ public class AbstractTableModelProfesor extends AbstractTableModel{
 		return null;
 	}
 	
+	//postavlja odredjenu vrednost na mesto u tabeli
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub

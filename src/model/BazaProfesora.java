@@ -37,10 +37,9 @@ public class BazaProfesora {
 	
 	private void initProfesori() {
 		this.profesori = new ArrayList<Profesor>();
-		profesori.add(new Profesor("Mika", "Mikic", "2.5.1987.", "Njegoseva 2", "021 556 748", "mika.mikic@gmail.com", "DO 6", "938204826", "Dr", "Redovni profesor"));
-		profesori.add(new Profesor("Ana", "Anic", "6.7.1978.", "Njegoseva 7", "021 376 768", "ana.anic@gmail.com", "DO 6", "37843257", "Dr", "Redovni profesor"));
-		//profesori.add(new Profesor(generateId(), "Zika", "Zikic", "FMP"));
-		//profesori.add(new Profesor(generateId(), "Pera", "Peric", "OKK Sabac"));
+		profesori.add(new Profesor("Mika", "Mikic", "Dr", "Redovni profesor"));
+		profesori.add(new Profesor("Ana", "Anic", "Dr", "Redovni profesor"));
+
 	}
 	
 	
@@ -72,20 +71,8 @@ public class BazaProfesora {
 		case 1:
 			return profesori.getPrezimeProf();
 		case 2:
-			return profesori.getDatumRodjenjaProf();
-		case 3:
-			return profesori.getAdresaStanovanjaProf();
-		case 4:
-			return profesori.getKontaktTelefonProf();	
-		case 5:
-			return profesori.geteMailAdresaProf();	
-		case 6:
-			return profesori.getAdresaKancelarijeProf();
-		case 7:
-			return profesori.getBrojLicneKarteProf();	
-		case 8:
 			return profesori.getTitulaProf();		
-		case 9:
+		case 3:
 			return profesori.getZvanjeProf();
 	    default:
 	    	return null;
