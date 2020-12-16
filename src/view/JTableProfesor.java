@@ -17,16 +17,10 @@ public class JTableProfesor extends JTable {
 	/**
 	 * 
 	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 	
-	private static JTableProfesor instance = null;
-	public static JTableProfesor getInstance() {
-		if(instance==null) {
-			instance = new JTableProfesor();
-		}
-		
-		return instance;
-	}
 
 	public JTableProfesor() {
 		this.setRowSelectionAllowed(true);

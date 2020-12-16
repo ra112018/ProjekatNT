@@ -11,6 +11,8 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import listeners.DodajProfesoraListener;
+
 public class ToolBar extends JToolBar {
 		
 	/**REFERENCA: Radjeno po uzoru na Vezbe,Termin3 */
@@ -19,7 +21,7 @@ public class ToolBar extends JToolBar {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ToolBar() {
+	public ToolBar(Integer trenutniTab) {
 		
 		super(SwingConstants.HORIZONTAL);
 		
@@ -62,6 +64,11 @@ public class ToolBar extends JToolBar {
         
 		setFloatable(false);
 		setBackground(new Color(192, 192, 192));
+		
+		//treba promeniti zbog studenta
+		if(trenutniTab==0) {
+			btnDodaj.addActionListener(new DodajProfesoraListener());
+		}
 		
 
 	}

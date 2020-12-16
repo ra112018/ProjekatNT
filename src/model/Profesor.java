@@ -29,14 +29,14 @@ public class Profesor {
 
 	}
 	
-	public Profesor (String prezimeProf, String imeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
+	public Profesor (String imeProf, String prezimeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
 			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
 			String titulaProf, String zvanjeProf, List<Predmet> predmetiProf) {
 		
 		super();
 		
-		this.prezimeProf = prezimeProf;
 		this.imeProf = imeProf;
+		this.prezimeProf = prezimeProf;
 		this.datumRodjenjaProf = datumRodjenjaProf;
 		this.adresaStanovanjaProf = adresaStanovanjaProf;
 		this.kontaktTelefonProf = kontaktTelefonProf;
@@ -49,14 +49,14 @@ public class Profesor {
 	}
 	
 	
-	public Profesor (String prezimeProf, String imeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
+	public Profesor (String imeProf, String prezimeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
 			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
 			String titulaProf, String zvanjeProf) {
 		
 		super();
 		
-		this.prezimeProf = prezimeProf;
 		this.imeProf = imeProf;
+		this.prezimeProf = prezimeProf;
 		this.datumRodjenjaProf = datumRodjenjaProf;
 		this.adresaStanovanjaProf = adresaStanovanjaProf;
 		this.kontaktTelefonProf = kontaktTelefonProf;

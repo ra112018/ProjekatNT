@@ -10,6 +10,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 
@@ -31,8 +33,10 @@ public class GlavniProzor extends JFrame{
 		return instance;
 	}
 	
-	private JTable tabelaProfesori;
-	private JTable tabelaPredmeti;
+	
+	private int trenutniTab=0;
+
+	private TabbedPane tabbedPane;
 	
 
 	public GlavniProzor() {
@@ -50,39 +54,43 @@ public class GlavniProzor extends JFrame{
 		
 		prikaziTabove();
 		
+		ToolbarInicijalizacija();
 		
 		MyMenuBar menu = new MyMenuBar();
 		this.setJMenuBar(menu);
-		
-		ToolBar toolbar = new ToolBar();
-		add(toolbar, BorderLayout.NORTH);
 		
 		StatusBar statusBar = new StatusBar();
 		getContentPane().add(statusBar,BorderLayout.SOUTH);
 	}
 	
+	
+	
+	private void ToolbarInicijalizacija() {
+		ToolBar toolbar = new ToolBar(trenutniTab);
+		add(toolbar, BorderLayout.NORTH);
+	}
+	
 	/**REFERENCA: Radjeno po uzoru na https://www.tutorialspoint.com/how-to-add-a-tab-in-jtabbedpane-with-java
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/JTabbedPane.html*/
+	
 	private void prikaziTabove() {
+		this.tabbedPane = new TabbedPane();
 		
-		JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
-		tab.setBackground(Color.WHITE);
-		getContentPane().add(tab, BorderLayout.CENTER);
-		
-		tabelaProfesori = new JTableProfesor();
-		tabelaProfesori.getTableHeader().setReorderingAllowed(false);
-		tabelaProfesori.setAutoCreateRowSorter(true);
-		JScrollPane scrollProfesori = new JScrollPane(tabelaProfesori);
-		tab.addTab("Profesori", null, scrollProfesori, null);
-		
-	    
-		tabelaPredmeti = new JTablePredmet();
-		tabelaPredmeti.getTableHeader().setReorderingAllowed(false);
-		tabelaPredmeti.setAutoCreateRowSorter(true);
-		JScrollPane scrollPredmeti = new JScrollPane(tabelaPredmeti);
-		tab.addTab("Predmeti", null, scrollPredmeti, null);
+		tabbedPane.addTab("Profesori", TabProfesor.getInstance());
+		tabbedPane.addTab("Predmeti", TabPredmet.getInstance());
 		
 		
+		tabbedPane.addChangeListener(new ChangeListener() {
+	        public void stateChanged(ChangeEvent e) {
+	        	trenutniTab = tabbedPane.getSelectedIndex();
+
+	        }
+	    });
+	 
+	
 		
+		this.add(this.tabbedPane, BorderLayout.CENTER);
 	}
+		
+
 }
