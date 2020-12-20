@@ -45,10 +45,20 @@ public class Student {
 		this.status = extracted(string);
 		this.prOcena = prOcena;
 	}
+	public Student(int brIndeksa,String prezimeSt, String imeSt, int godinaStudija, String string, double prOcena) {
+		super();
+		this.prezimeSt = prezimeSt;
+		this.imeSt = imeSt;
+		this.brIndeksa = brIndeksa;
+		this.godinaStudija = godinaStudija;
+		
+		this.status = extracted(string);
+		this.prOcena = prOcena;
+	}
 
 
 	private Status extracted(String string) {
-		return status.valueOf(string);
+		return Status.valueOf(string);
 	}
 
 
@@ -91,7 +101,11 @@ public class Student {
 	}
 
 
-	
+	public Student(String prezimeSt,String imeSt) {
+		super();
+		this.prezimeSt=prezimeSt;
+		this.imeSt=imeSt;
+	}
 
 	public String getPrezimeSt() {
 		return prezimeSt;

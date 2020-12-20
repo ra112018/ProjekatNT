@@ -1,15 +1,10 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -78,6 +73,8 @@ public class GlavniProzor extends JFrame{
 		
 		tabbedPane.addTab("Profesori", TabProfesor.getInstance());
 		tabbedPane.addTab("Predmeti", TabPredmet.getInstance());
+		tabbedPane.addTab("Studenti", TabStudent.getInstance());
+		tabbedPane.addTab("Ocene", TabOcene.getInstance());
 		
 		
 		tabbedPane.addChangeListener(new ChangeListener() {

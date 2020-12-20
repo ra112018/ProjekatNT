@@ -39,8 +39,8 @@ public static BazaStudenata instance = null;
 	
 	private void initStudenti() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("Perić", "Pera", 1, 1, "B", 8.16));
-		studenti.add(new Student("Marković", "Marko", 2, 4, "S" , 7.17));
+		studenti.add(new Student(1,"Perić", "Pera", 1, "B", 8.16));
+		studenti.add(new Student(2,"Marković", "Marko", 4, "S" , 7.17));
 
 	}
 	
@@ -68,14 +68,21 @@ public static BazaStudenata instance = null;
 	public String getValueAt(int row, int column) {
 		Student studenti = this.studenti.get(row);
 		switch (column) {
+
 		case 0:
-			return studenti.getImeSt();
+			return String.valueOf(studenti.getBrIndeksa());	
 		case 1:
 			return studenti.getPrezimeSt();
 		case 2:
-			return String.valueOf(studenti.getBrIndeksa());		
+			return studenti.getImeSt();	
 		case 3:
 			return String.valueOf(studenti.getGodinaStudija());
+		case 4:
+			return String.valueOf(studenti.getStatus());
+		case 5:
+			return String.valueOf(studenti.getPrOcena());
+
+
 	    default:
 	    	return null;
 		}

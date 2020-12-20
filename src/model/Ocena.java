@@ -1,20 +1,28 @@
 package model;
 
 import java.util.Date;
-import java.util.*; 
+import java.time.*; 
+import java.time.temporal.*; 
 
 public class Ocena {
 	private Student student;
-	private Predmet predmet;
+	private String predmet;
 	private int ocena;
-	private Date date;
+	private LocalDate date;
 	
-	public Ocena(Student student, Predmet predmet, int ocena, Date date) {
+	public Ocena(Student student, String predmet, int ocena, LocalDate date) {
 		super();
 		this.student = student;
 		this.predmet = predmet;
 		this.ocena = ocena;
 		this.date = date;
+	}
+	public Ocena(String imest, String prezst,String nazivPredmeta,int ocena,LocalDate date) {
+		super();
+		this.student= new Student(imest,prezst);
+		this.predmet=nazivPredmeta;
+		this.ocena=ocena;
+		this.date=date;
 	}
 
 	public Student getStudent() {
@@ -24,12 +32,15 @@ public class Ocena {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	public void setStudent(String imeSt,String prezSt) {
+		this.student = new Student(imeSt,prezSt);
+	}
 
-	public Predmet getPredmet() {
+	public String getPredmet() {
 		return predmet;
 	}
 
-	public void setPredmet(Predmet predmet) {
+	public void setPredmet(String predmet) {
 		this.predmet = predmet;
 	}
 
@@ -41,11 +52,11 @@ public class Ocena {
 		this.ocena = ocena;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	
