@@ -39,8 +39,8 @@ public class BazaPredmeta {
 	
 	private void initPredmeti() {
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("20", "OISISI", "8", "3", "5"));
-		predmeti.add(new Predmet("10", "NANS", "4", "3", "5"));
+		predmeti.add(new Predmet("P20", "OISISI", "8", 3, "zimski"));
+		predmeti.add(new Predmet("R10", "NANS", "4", 3, "zimski"));
 
 	}
 	
@@ -74,7 +74,7 @@ public class BazaPredmeta {
 		case 2:
 			return predmet.getBrojESPB();
 		case 3:
-			return predmet.getGodinaStudija();
+			return Integer.toString(predmet.getGodinaStudija());
 		case 4:
 			return predmet.getSemestar();
 		default:
@@ -82,22 +82,5 @@ public class BazaPredmeta {
 		}
 	}
 
-	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
-			String predmetniProfesor, String brojESPBodova) {
-		
-		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija, predmetniProfesor, brojESPBodova));
-	}
-	
-	public void izmeniPredmet(int row, String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
-			String predmetniProfesor, String brojESPBodova) {
-		
-		Predmet predmet = BazaPredmeta.getInstance().getRow(row);
-		
-		predmet.setSifraPredmeta(sifraPredmeta);
-		predmet.setNazivPredmeta(nazivPredmeta);
-		predmet.setSemestar(semestar);
-		predmet.setGodinaStudija(godinaStudija);
-		predmet.setPredmetniProfesor(predmetniProfesor);
-		predmet.setBrojESPB(brojESPBodova);
-	}
+
 }

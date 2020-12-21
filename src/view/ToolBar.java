@@ -12,6 +12,7 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import listeners.DodajProfesoraListener;
+import listeners.IzmeniProfesoraListener;
 
 public class ToolBar extends JToolBar {
 		
@@ -68,6 +69,7 @@ public class ToolBar extends JToolBar {
 		
 		if(trenutniTab==1) {
 			btnDodaj.addActionListener(new DodajProfesoraListener());
+			btnIzmena.addActionListener(new IzmeniProfesoraListener());
 		}
 		
 

@@ -1,17 +1,21 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Predmet {
 	
 	private String sifraPredmeta;
 	private String nazivPredmeta;
 	private String semestar;
-	private String godinaStudija;			
-	private String predmetniProfesor;
+	private Integer godinaStudija;			
+	private Profesor predmetniProfesor;
 	private String brojESPB;
-	//lista studenata koji su polozili predmet
-	//lista studenata koji nisu polozili predmet
+	private List<Student> studentiPolozili = new ArrayList<Student>();   //lista studenata koji su polozili predmet
+	private List<Student> studentiNisuPolozili = new ArrayList<Student>();  //lista studenata koji nisu polozili predmet
 	
-	public Predmet (String sifraPredmeta, String nazivPredmeta, String brojESPB, String godinaStudija,
+	
+	public Predmet (String sifraPredmeta, String nazivPredmeta, String brojESPB, Integer godinaStudija,
 			String semestar) {
 		
 		super();
@@ -23,8 +27,8 @@ public class Predmet {
 			
 	}
 	
-	public Predmet (String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
-			String predmetniProfesor, String brojESPB) {
+	public Predmet (String sifraPredmeta, String nazivPredmeta, String semestar, Integer godinaStudija,
+			Profesor predmetniProfesor, String brojESPB) {
 		
 		super();
 		this.sifraPredmeta = sifraPredmeta;
@@ -60,20 +64,36 @@ public class Predmet {
 		this.semestar = semestar;
 	}
 
-	public String getGodinaStudija() {
+	public Integer getGodinaStudija() {
 		return godinaStudija;
 	}
 
-	public void setGodinaStudija(String godinaStudija) {
+	public void setGodinaStudija(Integer godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 
-	public String getPredmetniProfesor() {
+	public Profesor getPredmetniProfesor() {
 		return predmetniProfesor;
 	}
 
-	public void setPredmetniProfesor(String predmetniProfesor) {
+	public void setPredmetniProfesor(Profesor predmetniProfesor) {
 		this.predmetniProfesor = predmetniProfesor;
+	}
+
+	public List<Student> getStudentiPolozili() {
+		return studentiPolozili;
+	}
+
+	public void setStudentiPolozili(List<Student> studentiPolozili) {
+		this.studentiPolozili = studentiPolozili;
+	}
+
+	public List<Student> getStudentiNisuPolozili() {
+		return studentiNisuPolozili;
+	}
+
+	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
+		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
 
 	public String getBrojESPB() {

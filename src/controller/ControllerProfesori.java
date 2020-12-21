@@ -4,6 +4,7 @@ import java.util.Date;
 
 import model.BazaProfesora;
 import model.Profesor;
+import view.TabProfesor;
 
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji JTableMVCSimple */
 
@@ -36,13 +37,16 @@ public class ControllerProfesori {
 		
 		BazaProfesora.getInstance().dodajProfesora(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa, adresaKancelarije, brojLicneKarte, titula, zvanje);
 		
+		TabProfesor.getInstance().azurirajPrikaz();
 	}
 	
 	public void izmeniProfesora(int row, String ime, String prezime, Date datumRodjenja, String adresaStanovanja, 
-			String kontaktTelefon, String emailAdresa, String adresaKancelarije, Integer brojLicneKarte, 
+			String kontaktTelefon, String emailAdresa, String adresaKancelarije, int brojLicneKarte, 
 			String titula, String zvanje) {
 		
 		BazaProfesora.getInstance().izmeniProfesora(row, ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa, adresaKancelarije, brojLicneKarte, titula, zvanje);
+		
+		TabProfesor.getInstance().azurirajPrikaz();
 		
 	}
 	
