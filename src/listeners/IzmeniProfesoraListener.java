@@ -9,6 +9,8 @@ import dialogs.DialogIzmeniProfesora;
 import view.GlavniProzor;
 import view.TabProfesor;
 
+/**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji */
+
 public class IzmeniProfesoraListener implements ActionListener {
 
 	@Override

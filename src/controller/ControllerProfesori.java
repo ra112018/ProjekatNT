@@ -1,9 +1,9 @@
 package controller;
 
+
 import java.util.Date;
 
 import model.BazaProfesora;
-import model.Profesor;
 import view.TabProfesor;
 
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji JTableMVCSimple */
