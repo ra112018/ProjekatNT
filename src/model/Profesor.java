@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Profesor {
@@ -8,12 +9,12 @@ public class Profesor {
 	
 	private String prezimeProf;
 	private String imeProf;
-	private String datumRodjenjaProf;
+	private Date datumRodjenjaProf;
 	private String adresaStanovanjaProf;
 	private String kontaktTelefonProf;
 	private String eMailAdresaProf;
 	private String adresaKancelarijeProf;
-	private String brojLicneKarteProf;
+	private Integer brojLicneKarteProf;
 	private String titulaProf;
 	private String zvanjeProf; 
 	private List<Predmet> predmetiProf = null;
@@ -29,8 +30,8 @@ public class Profesor {
 
 	}
 	
-	public Profesor (String imeProf, String prezimeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
-			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
+	public Profesor (String imeProf, String prezimeProf, Date datumRodjenjaProf, String adresaStanovanjaProf,
+			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, Integer brojLicneKarteProf,
 			String titulaProf, String zvanjeProf, List<Predmet> predmetiProf) {
 		
 		super();
@@ -49,8 +50,8 @@ public class Profesor {
 	}
 	
 	
-	public Profesor (String imeProf, String prezimeProf, String datumRodjenjaProf, String adresaStanovanjaProf,
-			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, String brojLicneKarteProf,
+	public Profesor (String imeProf, String prezimeProf, Date datumRodjenjaProf, String adresaStanovanjaProf,
+			String kontaktTelefonProf, String eMailAdresaProf, String adresaKancelarijeProf, Integer brojLicneKarteProf,
 			String titulaProf, String zvanjeProf) {
 		
 		super();
@@ -84,11 +85,11 @@ public class Profesor {
 		this.imeProf = imeProf;
 	}
 
-	public String getDatumRodjenjaProf() {
+	public Date getDatumRodjenjaProf() {
 		return datumRodjenjaProf;
 	}
 
-	public void setDatumRodjenjaProf(String datumRodjenjaProf) {
+	public void setDatumRodjenjaProf(Date datumRodjenjaProf) {
 		this.datumRodjenjaProf = datumRodjenjaProf;
 	}
 
@@ -124,11 +125,11 @@ public class Profesor {
 		this.adresaKancelarijeProf = adresaKancelarijeProf;
 	}
 
-	public String getBrojLicneKarteProf() {
+	public Integer getBrojLicneKarteProf() {
 		return brojLicneKarteProf;
 	}
 
-	public void setBrojLicneKarteProf(String brojLicneKarteProf) {
+	public void setBrojLicneKarteProf(Integer brojLicneKarteProf) {
 		this.brojLicneKarteProf = brojLicneKarteProf;
 	}
 

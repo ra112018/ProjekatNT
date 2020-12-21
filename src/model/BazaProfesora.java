@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -79,16 +80,16 @@ public class BazaProfesora {
 		}
 	}
 	
-	public void dodajProfesora(String ime, String prezime, String datumRodjenja, String adresaStanovanja, 
-			String kontaktTelefon, String emailAdresa, String adresaKancelarije, String brojLicneKarte, 
+	public void dodajProfesora(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, 
+			String kontaktTelefon, String emailAdresa, String adresaKancelarije, Integer brojLicneKarte, 
 			String titula, String zvanje) {
 		
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa,
 				adresaKancelarije, brojLicneKarte, titula, zvanje));
 	}
 	
-	public void izmeniProfesora(int row, String ime, String prezime, String datumRodjenja, String adresaStanovanja, 
-			String kontaktTelefon, String emailAdresa, String adresaKancelarije, String brojLicneKarte, 
+	public void izmeniProfesora(int row, String ime, String prezime, Date datumRodjenja, String adresaStanovanja, 
+			String kontaktTelefon, String emailAdresa, String adresaKancelarije, Integer brojLicneKarte, 
 			String titula, String zvanje) {
 		
 		Profesor profesor = BazaProfesora.getInstance().getRow(row);
@@ -104,6 +105,28 @@ public class BazaProfesora {
 		profesor.setTitulaProf(titula);
 		profesor.setZvanjeProf(zvanje);
 		
+	}
+	
+	public boolean daLiProfPostojiPoLicnojKarti(Integer licnaKarta) {
+		for(Profesor p : profesori) {
+			if(p.getBrojLicneKarteProf().equals(licnaKarta)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Profesor nadjiProfPoLicnoj(String licnaKarta) {
+		try {
+			for(Profesor p : profesori) {
+				if(p.getBrojLicneKarteProf().equals(Integer.parseInt(licnaKarta))) {
+					return p;
+				}
+			}
+			return null;
+		}catch(Exception e) {
+			return null;
+		}
 	}
 	
 	

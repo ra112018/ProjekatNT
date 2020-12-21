@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
@@ -22,6 +23,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -84,6 +89,65 @@ public class DialogDodajProfesora extends JDialog {
 		final JTextField txtFieldZvanje = new JTextField();
 		
 
+		/*
+		String[] comboTitula = { "Dr", "Profesor Dr", };
+		final JComboBox<String> combo = new JComboBox<String>(comboTitula);
+		combo.setSelectedIndex(0);
+		
+		combo.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent arg0) {
+				if (arg0.getStateChange() == ItemEvent.SELECTED) {
+				}
+			}
+		});
+		*/
+		
+		KeyListener myKeyListener = new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER
+						|| arg0.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+					return;
+				}
+				
+				JTextField txt = (JTextField) arg0.getComponent();
+				if (txt.getText().length() == 9) {
+					
+					JOptionPane.showMessageDialog(null, "Možete uneti maksimalno 9 karaktera!");
+					txt.setText(txt.getText().substring(0, 9));
+				}
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER
+						|| arg0.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+					return;
+				}
+				char c = arg0.getKeyChar();
+				if (c != '0' && c != '1' && c != '2' && c != '3' && c != '4' && c != '5' && c != '6' && c != '7' && c != '8'
+						&& c != '9') {
+					JOptionPane.showMessageDialog(null, "Dozvoljen je unos samo brojeva!");
+					JTextField txt = (JTextField) arg0.getComponent();
+					txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
+
+				}
+				
+			}
+			
+		};
 		
 		FocusListener myFocusListener = new FocusListener() {
 
@@ -100,7 +164,7 @@ public class DialogDodajProfesora extends JDialog {
 				// TODO Auto-generated method stub
 				if(!(txtFieldIme.getText().isEmpty() || txtFieldPrezime.getText().isEmpty() || txtFieldDatumRodjenja.getText().isEmpty() || 
 						txtFieldAdresaStanovanja.getText().isEmpty() || txtFieldBrTelefona.getText().isEmpty() || txtFieldEmail.getText().isEmpty() || 
-						txtFieldAdresaKancelarije.getText().isEmpty() || txtFieldLicnaKarta.getText().isEmpty() || txtFieldTitula.getText().isEmpty() || 
+						txtFieldAdresaKancelarije.getText().isEmpty() || txtFieldLicnaKarta.getText().isEmpty() || txtFieldTitula.getText().isEmpty() ||
 						txtFieldZvanje.getText().isEmpty())) 
 				{
 					
@@ -121,6 +185,8 @@ public class DialogDodajProfesora extends JDialog {
 		txtFieldLicnaKarta.addFocusListener(myFocusListener);
 		txtFieldTitula.addFocusListener(myFocusListener);
 		txtFieldZvanje.addFocusListener(myFocusListener);
+		
+		txtFieldLicnaKarta.addKeyListener(myKeyListener);
 		
 		
 		
@@ -168,8 +234,8 @@ public class DialogDodajProfesora extends JDialog {
 					e1.printStackTrace();
 				}
 				
-				ControllerProfesori.getInstance().dodajProfesora(txtFieldIme.getText(), txtFieldPrezime.getText(), txtFieldDatumRodjenja.getText(), txtFieldAdresaStanovanja.getText(), 
-						txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldAdresaKancelarije.getText(), txtFieldLicnaKarta.getText(), txtFieldTitula.getText(), txtFieldZvanje.getText());
+				ControllerProfesori.getInstance().dodajProfesora(txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
+						txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldAdresaKancelarije.getText(), Integer.parseInt(txtFieldLicnaKarta.getText()), txtFieldTitula.getText(), txtFieldZvanje.getText());
 				
 				TabProfesor.getInstance().azurirajPrikaz();
 				
@@ -188,6 +254,7 @@ public class DialogDodajProfesora extends JDialog {
 		
 	}
 	
+
 	private MaskFormatter getMaskFormatter(String format) {
 		MaskFormatter mask = null;
 		try {
@@ -205,5 +272,6 @@ public class DialogDodajProfesora extends JDialog {
 		container.add(component, g);	
 	}
 	
+
 	
 }

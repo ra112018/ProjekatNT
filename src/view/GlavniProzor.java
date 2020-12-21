@@ -28,6 +28,7 @@ public class GlavniProzor extends JFrame{
 		return instance;
 	}
 	
+	private ToolBar toolbar;
 	
 	private int trenutniTab=0;
 
@@ -51,17 +52,18 @@ public class GlavniProzor extends JFrame{
 		
 		ToolbarInicijalizacija();
 		
-		MyMenuBar menu = new MyMenuBar();
-		this.setJMenuBar(menu);
+		MenuBarInicijalizacija();
 		
 		StatusBar statusBar = new StatusBar();
 		getContentPane().add(statusBar,BorderLayout.SOUTH);
 	}
 	
-	
+	private void MenuBarInicijalizacija() {
+		this.setJMenuBar(new MyMenuBar(trenutniTab));
+	}
 	
 	private void ToolbarInicijalizacija() {
-		ToolBar toolbar = new ToolBar(trenutniTab);
+		this.toolbar = new ToolBar(trenutniTab);
 		add(toolbar, BorderLayout.NORTH);
 	}
 	
@@ -71,15 +73,17 @@ public class GlavniProzor extends JFrame{
 	private void prikaziTabove() {
 		this.tabbedPane = new TabbedPane();
 		
+		tabbedPane.addTab("Studenti", TabStudent.getInstance());
 		tabbedPane.addTab("Profesori", TabProfesor.getInstance());
 		tabbedPane.addTab("Predmeti", TabPredmet.getInstance());
-		tabbedPane.addTab("Studenti", TabStudent.getInstance());
 		tabbedPane.addTab("Ocene", TabOcene.getInstance());
 		
 		
 		tabbedPane.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	        	trenutniTab = tabbedPane.getSelectedIndex();
+	        	ToolbarReInicijalizacija();
+	        	MenuBarReInicijalizacija();
 
 	        }
 	    });
@@ -88,6 +92,18 @@ public class GlavniProzor extends JFrame{
 		
 		this.add(this.tabbedPane, BorderLayout.CENTER);
 	}
+	
+	private void ToolbarReInicijalizacija() {
+		this.remove(toolbar);
+		this.toolbar = new ToolBar(trenutniTab);
+		add(toolbar, BorderLayout.NORTH);
+	}
+	
+	private void MenuBarReInicijalizacija() {
+		this.remove(this.getMenuBar());
+		this.setJMenuBar(new MyMenuBar(trenutniTab));
+	}
+	
 		
 
 }

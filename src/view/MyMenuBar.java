@@ -5,6 +5,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import listeners.DodajProfesoraListener;
+
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -13,7 +15,7 @@ public class MyMenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
 
-	public MyMenuBar() {
+	public MyMenuBar(Integer trenutniTab) {
 
 		JMenu file = new JMenu("File");
 		file.setMnemonic('f');
@@ -72,6 +74,10 @@ public class MyMenuBar extends JMenuBar {
 	    miAbout.setAccelerator(ctrlAKeyStroke);	
 
 
+		if(trenutniTab==1) {
+			miNew.addActionListener(new DodajProfesoraListener());
+		} 
+	    
 	}
 
 }

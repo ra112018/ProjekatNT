@@ -65,8 +65,8 @@ public class ToolBar extends JToolBar {
 		setFloatable(false);
 		setBackground(new Color(192, 192, 192));
 		
-		//treba promeniti zbog studenta
-		if(trenutniTab==0) {
+		
+		if(trenutniTab==1) {
 			btnDodaj.addActionListener(new DodajProfesoraListener());
 		}
 		
