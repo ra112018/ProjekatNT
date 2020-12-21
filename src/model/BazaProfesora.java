@@ -131,4 +131,25 @@ public class BazaProfesora {
 	}
 	
 	
+	public void obrisiPredmetProfesoru(Profesor profesor, Predmet predmet) {
+		
+		Profesor prof = null;
+		
+		if(profesor != null) {
+			for(int i = 0; i < profesori.size(); i++) {
+				if(profesori.get(i).getBrojLicneKarteProf().equals(profesor.getBrojLicneKarteProf())) {
+					prof = profesori.get(i);
+					break;
+				}
+			}
+			
+			for(int i = 0; i < prof.getPredmeti().size(); i++) {
+				if(prof.getPredmeti().get(i).equals(predmet.getSifraPredmeta())) {
+					prof.getPredmeti().remove(i);
+					break;
+				}
+			}
+		}
+	}
+	
 }

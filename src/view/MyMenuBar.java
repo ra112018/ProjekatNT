@@ -7,6 +7,7 @@ import javax.swing.KeyStroke;
 
 import listeners.DodajProfesoraListener;
 import listeners.IzmeniProfesoraListener;
+import listeners.ObrisiPredmetListener;
 
 import java.awt.event.KeyEvent;
 
@@ -78,7 +79,9 @@ public class MyMenuBar extends JMenuBar {
 		if(trenutniTab==1) {
 			miNew.addActionListener(new DodajProfesoraListener());
 			miEdit.addActionListener(new IzmeniProfesoraListener());
-		} 
+		}else if(trenutniTab==2) {
+			miDelete.addActionListener(new ObrisiPredmetListener());
+		}
 	    
 	}
 

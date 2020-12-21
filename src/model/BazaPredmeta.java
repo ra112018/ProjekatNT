@@ -81,6 +81,18 @@ public class BazaPredmeta {
 			return null;
 		}
 	}
+	
+	public void brisanjePredmeta(Predmet predmet) {
+		
+		for(int i = 0; i < predmeti.size(); i++) {
+			if(predmeti.get(i).getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
+				predmeti.remove(i);
+				break;
+			}
+		}
+		
+		BazaProfesora.getInstance().obrisiPredmetProfesoru(predmet.getPredmetniProfesor(), predmet);
+	}
 
 
 }
