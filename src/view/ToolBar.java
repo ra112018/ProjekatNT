@@ -2,6 +2,14 @@ package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
+import controller.PretragaTable;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -28,7 +36,7 @@ public class ToolBar extends JToolBar {
 		
 		super(SwingConstants.HORIZONTAL);
 		
-		
+		final JTableProfesor tabelaProf = new JTableProfesor();
 		
 		
 		JButton btnDodaj = new JButton();
@@ -74,6 +82,54 @@ public class ToolBar extends JToolBar {
 		if(trenutniTab==1) {
 			btnDodaj.addActionListener(new DodajProfesoraListener());
 			btnIzmena.addActionListener(new IzmeniProfesoraListener());
+			
+			
+			
+			searchInput.addKeyListener(new KeyAdapter() {
+				
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						PretragaTable pretraga = new PretragaTable(tabelaProf, trenutniTab);
+						pretraga.pretragaProfesora(searchInput.getText());
+					}
+				}
+			});
+			
+			pretrazi.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					PretragaTable pretraga = new PretragaTable(tabelaProf, trenutniTab);
+					pretraga.pretragaProfesora(searchInput.getText());
+				}
+			});
+			
+			
+			searchInput.getDocument().addDocumentListener(new DocumentListener() {
+
+				@Override
+				public void insertUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void removeUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					if(searchInput.getText().equals("")) {
+						PretragaTable azurirajProfesori = new PretragaTable(tabelaProf, 1);
+						azurirajProfesori.osProfesori("");
+					}
+				}
+
+				@Override
+				public void changedUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
+		
+			
 			
 		}else if (trenutniTab==2) {
 			btnBrisanje.addActionListener(new ObrisiPredmetListener());
