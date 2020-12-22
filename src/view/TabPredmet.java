@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.table.TableRowSorter;
 
 public class TabPredmet extends JPanel{
 
@@ -24,6 +25,7 @@ public class TabPredmet extends JPanel{
 	
 	
 	private JTablePredmet tablePredmet;
+	private TableRowSorter<AbstractTableModelPredmeti> sorter;
 	
 	private TabPredmet() {
 		this.setLayout(new BorderLayout());
@@ -32,6 +34,8 @@ public class TabPredmet extends JPanel{
 		tablePredmet.setPreferredSize(new Dimension(1000,800));
 		JScrollPane scrollProf = new JScrollPane(tablePredmet);
 		add(scrollProf, BorderLayout.CENTER);
+		
+		inicijalizujSortiranje();
 		
 	}
 	
@@ -46,5 +50,8 @@ public class TabPredmet extends JPanel{
 		validate();
 	}
 
-	
+	public void inicijalizujSortiranje() {
+		this.sorter = new TableRowSorter<AbstractTableModelPredmeti>((AbstractTableModelPredmeti) tablePredmet.getModel());
+		tablePredmet.setRowSorter(this.sorter);
+	}
 }

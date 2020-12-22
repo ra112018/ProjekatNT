@@ -90,7 +90,6 @@ public class TabProfesor extends JPanel{
 	
 	public void inicijalizujSortiranje() {
 		this.sorter = new TableRowSorter<AbstractTableModelProfesor>((AbstractTableModelProfesor) tableProfesor.getModel());
-		this.sorter.setSortable(2, false);
 		tableProfesor.setRowSorter(this.sorter);
 	}
 
