@@ -23,9 +23,13 @@ public class ToolBar extends JToolBar {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ToolBar(Integer trenutniTab) {
+	public ToolBar(final Integer trenutniTab) {
+		
 		
 		super(SwingConstants.HORIZONTAL);
+		
+		
+		
 		
 		JButton btnDodaj = new JButton();
 		btnDodaj.setToolTipText("Dodaj");
@@ -52,7 +56,7 @@ public class ToolBar extends JToolBar {
   
         add(Box.createHorizontalGlue());
         
-		JTextField searchInput = new JTextField(15);
+		final JTextField searchInput = new JTextField(15);
 		searchInput.setMaximumSize(searchInput.getPreferredSize());
 		add(searchInput);
 		
@@ -67,10 +71,10 @@ public class ToolBar extends JToolBar {
 		setFloatable(false);
 		setBackground(new Color(192, 192, 192));
 		
-		
 		if(trenutniTab==1) {
 			btnDodaj.addActionListener(new DodajProfesoraListener());
 			btnIzmena.addActionListener(new IzmeniProfesoraListener());
+			
 		}else if (trenutniTab==2) {
 			btnBrisanje.addActionListener(new ObrisiPredmetListener());
 		}
