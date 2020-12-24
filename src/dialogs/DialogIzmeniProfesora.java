@@ -23,13 +23,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.MaskFormatter;
 
 import controller.ControllerProfesori;
 import model.BazaProfesora;
 import model.Profesor;
 import view.GlavniProzor;
+import view.TabOcene;
+import view.TabPredmet;
 import view.TabProfesor;
+import view.TabStudent;
+import view.TabbedPane;
 
 public class DialogIzmeniProfesora extends JDialog {
 
