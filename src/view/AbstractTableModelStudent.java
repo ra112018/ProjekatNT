@@ -48,9 +48,6 @@ public class AbstractTableModelStudent extends AbstractTableModel{
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
 		super.setValueAt(aValue, rowIndex, columnIndex);
-		if (columnIndex != BazaStudenata.getInstance().getColumnCount()) {
-			return;
-		}
 		
 	}
 	

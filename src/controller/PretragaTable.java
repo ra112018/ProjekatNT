@@ -12,18 +12,23 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
 import view.AbstractTableModelProfesor;
+import view.AbstractTableModelStudent;
 import view.GlavniProzor;
 
 public class PretragaTable {
 
 	private TableRowSorter<AbstractTableModelProfesor> rowSorterProfesor;
-	
+	private TableRowSorter<AbstractTableModelStudent> rowSorterStudent;
+
 	private JTable tabelaPretrage;
 	
 	public PretragaTable(JTable tabela, Integer kojaTabela) {
 		this.tabelaPretrage = tabela;
 		if(kojaTabela == 1) {
 			rowSorterProfesor = new TableRowSorter(tabelaPretrage.getModel());
+		}
+		else if (kojaTabela == 0) {
+			rowSorterStudent =new TableRowSorter(tabelaPretrage.getModel());
 		}
 	}
 	
@@ -54,10 +59,11 @@ public class PretragaTable {
 				}
 			}
 			return map;
-		}else {
-			return null;
+		} 
+			
+			else	return null;
 		}
-	}
+	
 	
 	public void pretragaProfesora(String tekstPretrage) {
 		Map<Integer,String>  map = izdvoj("profesor", tekstPretrage);
@@ -85,6 +91,35 @@ public class PretragaTable {
 			rowSorterProfesor.setRowFilter(null);
 		}else {
 			rowSorterProfesor.setRowFilter(RowFilter.regexFilter("(?i)" + tekstPretrage));
+		}
+	}
+	
+	public void pretragaStudenata(String tekstPretrage) {
+		Map<Integer,String>  map = izdvoj("student", tekstPretrage);
+		
+		if(map.isEmpty() == false) {
+			tabelaPretrage.setRowSorter(rowSorterStudent);
+			List<RowFilter<Object,Object>> filteri = new ArrayList<RowFilter<Object,Object>>(map.size());
+			
+			for(Entry<Integer,String> e : map.entrySet()) {
+				filteri.add(RowFilter.regexFilter("(?i)" + e.getValue(), e.getKey()));
+				
+			}
+			
+			RowFilter<Object,Object> servisFilter = RowFilter.andFilter(filteri);
+			rowSorterStudent.setRowFilter(servisFilter);
+		}else {
+			JOptionPane.showMessageDialog(GlavniProzor.getInstance(), "Kriterijum za pretragu nije dobro unesen!");
+		}
+	}
+	
+	public void osStudenti(String tekstPretrage) {
+		tabelaPretrage.setRowSorter(rowSorterStudent);
+		
+		if(tekstPretrage.trim().length() == 0) {
+			rowSorterStudent.setRowFilter(null);
+		}else {
+			rowSorterStudent.setRowFilter(RowFilter.regexFilter("(?i)" + tekstPretrage));
 		}
 	}
 }

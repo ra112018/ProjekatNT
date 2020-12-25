@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.table.TableRowSorter;
 
 public class TabStudent extends JPanel{
 
@@ -23,14 +24,17 @@ public class TabStudent extends JPanel{
 	}
 	
 	private JTableStudent tableStudent;
+	private TableRowSorter<AbstractTableModelStudent> sorter;
 	
 	private TabStudent() {
 		this.setLayout(new BorderLayout());
 		tableStudent = new JTableStudent();
 		
 		tableStudent.setPreferredSize(new Dimension(1000,800));
-		JScrollPane scrollProf = new JScrollPane(tableStudent);
-		add(scrollProf, BorderLayout.CENTER);
+		JScrollPane scrollStud = new JScrollPane(tableStudent);
+		add(scrollStud, BorderLayout.CENTER);
+		
+		inicijalizujSortiranje();
 		
 	}
 	
@@ -43,4 +47,11 @@ public class TabStudent extends JPanel{
 		model.fireTableDataChanged();
 		validate();
 	}
+	
+	
+	public void inicijalizujSortiranje() {
+		this.sorter = new TableRowSorter<AbstractTableModelStudent>((AbstractTableModelStudent) tableStudent.getModel());
+		tableStudent.setRowSorter(this.sorter);
+	}
+
 }

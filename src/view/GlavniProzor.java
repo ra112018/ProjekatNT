@@ -76,7 +76,6 @@ public class GlavniProzor extends JFrame{
 		tabbedPane.addTab("Studenti", TabStudent.getInstance());
 		tabbedPane.addTab("Profesori", TabProfesor.getInstance());
 		tabbedPane.addTab("Predmeti", TabPredmet.getInstance());
-		tabbedPane.addTab("Ocene", TabOcene.getInstance());
 		
 		
 		tabbedPane.addChangeListener(new ChangeListener() {

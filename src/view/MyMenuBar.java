@@ -5,9 +5,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import listeners.DodajProfesoraListener;
-import listeners.IzmeniProfesoraListener;
-import listeners.ObrisiPredmetListener;
+
+import listeners.*;
 
 import java.awt.event.KeyEvent;
 
@@ -20,7 +19,7 @@ public class MyMenuBar extends JMenuBar {
 	public MyMenuBar(Integer trenutniTab) {
 
 		JMenu file = new JMenu("File");
-		file.setMnemonic('f');
+		file.setMnemonic(KeyEvent.VK_F);		//Zato što je stavka menija potrebno je pritisnuti alt+f na tastaturi 
 		add(file);
 
 		JMenuItem miNew = new JMenuItem("New", KeyEvent.VK_N);
@@ -67,6 +66,7 @@ public class MyMenuBar extends JMenuBar {
 		miHelp.setMnemonic('h');
 		KeyStroke ctrlHKeyStroke = KeyStroke.getKeyStroke("control H");
 	    miHelp.setAccelerator(ctrlHKeyStroke);	
+	    miHelp.addActionListener(new HelpListener());
 
 		JMenuItem miAbout=new JMenuItem("About",KeyEvent.VK_A);
 		miAbout.setIcon(new ImageIcon("images/aboutmb.jpg"));
@@ -74,6 +74,7 @@ public class MyMenuBar extends JMenuBar {
 		miAbout.setMnemonic('a');
 		KeyStroke ctrlAKeyStroke = KeyStroke.getKeyStroke("control A");
 	    miAbout.setAccelerator(ctrlAKeyStroke);	
+	    miAbout.addActionListener(new AboutListener());
 
 
 		if(trenutniTab==1) {
@@ -82,7 +83,12 @@ public class MyMenuBar extends JMenuBar {
 		}else if(trenutniTab==2) {
 			miDelete.addActionListener(new ObrisiPredmetListener());
 		}
-	    
+		if(trenutniTab==0) {
+			miNew.addActionListener(new DodajStudentaListener());
+			miEdit.addActionListener(new IzmeniStudentaListener());
+		}else if(trenutniTab==2) {
+			miDelete.addActionListener(new ObrisiPredmetListener());
+		}
 	}
 
 }

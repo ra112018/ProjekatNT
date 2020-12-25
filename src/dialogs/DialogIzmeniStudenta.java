@@ -1,19 +1,5 @@
 package dialogs;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
-import controller.ControllerStudenti;
-import view.GlavniProzor;
-
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -29,23 +15,44 @@ import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Pattern;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.text.MaskFormatter;
 
-public class DialogDodajStudenta extends JDialog {
+import controller.ControllerStudenti;
+import model.BazaStudenata;
+import model.Student;
+import view.GlavniProzor;
+import view.TabPredmet;
+import view.TabStudent;
+import view.TabbedPane;
 
+public class DialogIzmeniStudenta extends JDialog {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
-	public DialogDodajStudenta() {
-		super(GlavniProzor.getInstance(), "Dodaj studenta", true);
+	public DialogIzmeniStudenta(final int row) {
+		
+		super(GlavniProzor.getInstance(), "Izmeni studenta", true);
 		this.setLayout(new GridBagLayout());
+		Student student = BazaStudenata.getInstance().getRow(row);
 		setSize(500,500);
 		
 		final JButton potvrdi = new JButton("Potvrdi");
-		potvrdi.setEnabled(true);
-		potvrdi.setPreferredSize(new Dimension(120, 40));
-		potvrdi.setMnemonic('p'); 
-
+		potvrdi.setEnabled(false);
+		potvrdi.setPreferredSize(new Dimension(100, 40));
+		
 		JLabel ime = new JLabel("Ime: ");
 		JLabel prezime = new JLabel("Prezime: ");
 		JLabel datumRodjenja = new JLabel("Datum rodjenja: ");
@@ -59,10 +66,10 @@ public class DialogDodajStudenta extends JDialog {
 		JLabel prOcena = new JLabel("Prosečna ocena: ");
 		JLabel polozeniIspiti = new JLabel("Polozeni ispiti: ");
 		JLabel nepolozeniIspiti = new JLabel("Nepolozeni ispiti: ");
-
-		//Insets(int top, int left, int bottom, int right)
+		
 		Insets insets = new Insets(10,0,0,0);
 		
+
 		addComponent(this, ime, 0, 0, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, prezime, 0, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, datumRodjenja, 0, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
@@ -79,7 +86,7 @@ public class DialogDodajStudenta extends JDialog {
 
 		final JTextField txtFieldIme = new JTextField();
 		final JTextField txtFieldPrezime = new JTextField();
-		final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
+		final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatterDate("##-##-####"));
 		final JTextField txtFieldAdresaStanovanja = new JTextField();
 		final JTextField txtFieldBrTelefona = new JTextField();
 		final JTextField txtFieldEmail = new JTextField();
@@ -91,9 +98,9 @@ public class DialogDodajStudenta extends JDialog {
 		final JTextField txtFieldpolozeniIspiti = new JTextField();
 		final JTextField txtFieldnepolozeniIspiti = new JTextField();
 
+		txtFieldDatumRodjenja.setValue(student.getDatumRodjenjaSt());
 		
-		
-		KeyListener myKeyListenerBrIndeksa = new KeyListener() {
+		KeyListener myKeyListener = new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -116,7 +123,6 @@ public class DialogDodajStudenta extends JDialog {
 					txt.setText(txt.getText().substring(0, 9));
 				}
 				
-				
 			}
 
 			@Override
@@ -134,10 +140,9 @@ public class DialogDodajStudenta extends JDialog {
 					txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
 
 				}
-				
 			}
-			
 		};
+		
 		FocusListener myFocusListener = new FocusListener() {
 
 			@Override
@@ -149,10 +154,15 @@ public class DialogDodajStudenta extends JDialog {
 			@Override
 			public void focusLost(FocusEvent arg0) {
 				// TODO Auto-generated method stub
-					
+				if(!(txtFieldIme.getText().isEmpty() || txtFieldPrezime.getText().isEmpty() || txtFieldDatumRodjenja.getText().isEmpty() || 
+						txtFieldBrIndeksa.getText().isEmpty() || txtFieldGodinaUpisa.getText().isEmpty() || txtFieldGodinaStudija.getText().isEmpty() || 
+						txtFieldstatus.getText().isEmpty() || txtFieldprOcena.getText().isEmpty() ||txtFieldpolozeniIspiti.getText().isEmpty() || txtFieldnepolozeniIspiti.getText().isEmpty() )) 
+				{
+					potvrdi.setEnabled(true);
+				}
 			}
 		};
-		
+
 		txtFieldIme.addFocusListener(myFocusListener);
 		txtFieldPrezime.addFocusListener(myFocusListener);
 		txtFieldDatumRodjenja.addFocusListener(myFocusListener);
@@ -166,31 +176,7 @@ public class DialogDodajStudenta extends JDialog {
 		txtFieldprOcena.addFocusListener(myFocusListener);
 		txtFieldpolozeniIspiti.addFocusListener(myFocusListener);
 		txtFieldnepolozeniIspiti.addFocusListener(myFocusListener);
-		
 
-		DocumentListener myDocumentListener = new DocumentListener() {
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				boolean valid = isValid(txtFieldEmail.getText());
-				if(!valid) {
-					JOptionPane.showMessageDialog(null, "Niste dobro uneli email!");
-				}
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
 		addComponent(this, txtFieldIme, 1, 0, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldPrezime, 1, 1, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldDatumRodjenja, 1, 2, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
@@ -210,8 +196,6 @@ public class DialogDodajStudenta extends JDialog {
 		JButton odustani = new JButton("Odustani");
 		odustani.setPreferredSize(new Dimension(100, 40));
 		
-		odustani.setMnemonic('o'); 
-
 		odustani.addActionListener(new ActionListener(){
 
 			@Override
@@ -220,43 +204,51 @@ public class DialogDodajStudenta extends JDialog {
 				dispose();
 				
 			}
+		});
+		
+		potvrdi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+				
+				Date DatumRodjenja = new Date();
+				try {
+					DatumRodjenja = formatter.parse(txtFieldDatumRodjenja.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				int brojIndeksa = Integer.parseInt(txtFieldBrIndeksa.getText());
+				
+					ControllerStudenti.getInstance().izmeniStudenta(row, txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
+							txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldBrIndeksa.getText(), txtFieldGodinaUpisa.getText(), txtFieldGodinaStudija.getText(),
+							txtFieldstatus.getText(),txtFieldprOcena.getText(),txtFieldpolozeniIspiti.getText(),txtFieldnepolozeniIspiti.getText());
+					
+					//TabProfesor.getInstance().azurirajPrikaz();
+					
+					dispose();
+			}
 			
 		});
 		
-	potvrdi.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
-			
-			Date DatumRodjenja = new Date();
-			try {
-				DatumRodjenja = formatter.parse(txtFieldDatumRodjenja.getText());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-			ControllerStudenti.getInstance().dodajStudenta(txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
-					txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldprOcena.getText(),  txtFieldstatus.getText(),Integer.parseInt(txtFieldBrIndeksa.getText()),txtFieldprOcena.getText(), txtFieldpolozeniIspiti.getText(), txtFieldnepolozeniIspiti.getText());
-			
-			//TabStudent.getInstance().azurirajPrikaz();
-			
-			dispose();
-		}
+		panel.add(odustani);
+		panel.add(potvrdi);
 		
-	});
+		addComponent(this, panel, 2, 10, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.0, 1.0);
+		setLocationRelativeTo(GlavniProzor.getInstance());
+	}
 	
-	panel.add(odustani);
-	panel.add(potvrdi);
+	private void addComponent(Container container, Component component, int gridx, int gridy, int gridwidth, int gridheight, int anchor, int fill, Insets insets, Double weightx, Double weighty) {
+		GridBagConstraints gbc = new GridBagConstraints(gridx, gridy, gridwidth, gridheight, weightx, weighty,
+	    anchor, fill, insets, 0, 0);
+	    container.add(component, gbc);
+	}
 	
-	addComponent(this, panel, 1, 13, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.0, 1.0);
-	setLocationRelativeTo(GlavniProzor.getInstance());
-	
-}
-	private MaskFormatter getMaskFormatter(String format) {
+	private MaskFormatter getMaskFormatterDate(String format) {
 		MaskFormatter mask = null;
 		try {
 			mask = new MaskFormatter(format);
@@ -266,32 +258,5 @@ public class DialogDodajStudenta extends JDialog {
 		}
 		return mask;
 	}
-	
-	private void addComponent(Container container, Component component, int x, int y, int width, int height, 
-			int anchor, int fill, Insets insets, Double weightx, Double weighty) {
-		GridBagConstraints g = new GridBagConstraints(x, y, width, height, weightx, weighty, anchor, fill, insets, 0, 0);
-		container.add(component, g);	
-	}
-	
-	public static boolean isValid(String email) 
-    { 
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
-                            "[a-zA-Z0-9_+&*-]+)*@" + 
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
-                            "A-Z]{2,7}$"; 
-                              
-        Pattern pat = Pattern.compile(emailRegex); 
-        if (email == null) 
-            return false; 
-        return pat.matcher(email).matches(); 
-    } 
-	
 
-
-/**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji, https://docs.oracle.com/javase/7/docs/api/java/awt/Dialog.html
- *https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 
- *https://www.geeksforgeeks.org/check-email-address-valid-not-java/*/
-
-	
 }
-

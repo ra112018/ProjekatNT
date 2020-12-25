@@ -31,7 +31,6 @@ import controller.ControllerProfesori;
 import model.BazaProfesora;
 import model.Profesor;
 import view.GlavniProzor;
-import view.TabOcene;
 import view.TabPredmet;
 import view.TabProfesor;
 import view.TabStudent;

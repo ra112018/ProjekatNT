@@ -7,7 +7,7 @@ import java.util.List;
 import model.Student.Status;
 
 
-/**REFERENCA: Rađeno po uzoru na vezbe, JTableMVCSimple, JTableMVCAdvanced, koleginicinu bazu */
+/**REFERENCA: RaÄ‘eno po uzoru na vezbe, JTableMVCSimple, JTableMVCAdvanced, koleginicinu bazu */
 
 public class BazaStudenata {
 public static BazaStudenata instance = null;
@@ -97,7 +97,6 @@ public static BazaStudenata instance = null;
 				kontaktTelefonSt, eMailAdresaSt, brIndeksa, godinaUpisa,  godinaStudija, string,
 				prOcena, polozeniIspiti, nepolozeniIspiti) );
 	}
-	
 	public void izmeniStudenta(int row,String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
 			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
 			String string, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
@@ -117,6 +116,24 @@ public static BazaStudenata instance = null;
 		student.setPrOcena(prOcena);
 		student.setPolozeniIspiti(polozeniIspiti);
 		student.setNepolozeniIspiti(nepolozeniIspiti);
+	}
+
+
+	public void izmeniStudenta(int row, String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
+			String kontaktTelefonSt, String eMailAdresaSt, String string, String string2, String string3, String status,
+			String string4, String string5, String string6) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void dodajStudenta(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
+			String text6, String text7, int parseInt, String text8, String text9, String text10) {
+		// TODO Auto-generated method stub
+		this.studenti.add(new Student( text,  text2,  datumRodjenja,  text3,
+				text4, text5, text6, text7,  parseInt, text8,
+				text9,text10) );
+		
 	}
 	
 	

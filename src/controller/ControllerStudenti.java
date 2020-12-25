@@ -46,12 +46,21 @@ public class ControllerStudenti {
 	}
 	
 	public void izmeniStudenta(int row, String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
-			String status, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
+			String kontaktTelefonSt, String eMailAdresaSt, String string, String string2, String string3,
+			String status, String string4, String string5, String string6) {
 		
 		BazaStudenata.getInstance().izmeniStudenta(row, prezimeSt,  imeSt,  datumRodjenjaSt,  adresaStanovanjaSt,
-				kontaktTelefonSt, eMailAdresaSt, brIndeksa, godinaUpisa,  godinaStudija, status,
-				prOcena, polozeniIspiti, nepolozeniIspiti);
+				kontaktTelefonSt, eMailAdresaSt, string, string2,  string3, status,
+				string4, string5, string6);
+		
+	}
+
+	public void dodajStudenta(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
+			String text6, String text7, int parseInt, String text8, String text9, String text10) {
+		// TODO Auto-generated method stub
+		BazaStudenata.getInstance().dodajStudenta( text,  text2,  datumRodjenja,  text3,
+		text4, text5, text6, text7,  parseInt, text8,
+		text9,text10) ;
 		
 	}
 }

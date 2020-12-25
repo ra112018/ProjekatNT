@@ -107,6 +107,24 @@ public class Student {
 		this.imeSt=imeSt;
 	}
 
+	public Student(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
+			String text6, String text7, int parseInt, String text8, String text9, String text10) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.prezimeSt = text;
+		this.imeSt = text2;
+		this.datumRodjenjaSt = datumRodjenja;
+		this.adresaStanovanjaSt = text3;
+		this.kontaktTelefonSt = text4;
+		this.eMailAdresaSt = text5;
+		this.brIndeksa = Integer.parseInt(text6);
+		this.godinaUpisa = Integer.parseInt(text7);
+		this.godinaStudija = Integer.parseInt(text8);
+		this.status = extracted(text9);
+		this.prOcena = Integer.parseInt(text10);
+	}
+
+
 	public String getPrezimeSt() {
 		return prezimeSt;
 	}

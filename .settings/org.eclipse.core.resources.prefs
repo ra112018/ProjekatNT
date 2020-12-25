@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/dialogs/DialogAbout.java=UTF-8
 encoding//src/dialogs/DialogDodajStudenta.java=UTF-8
+encoding//src/dialogs/DialogHelp.java=UTF-8
+encoding//src/dialogs/DialogIzmeniStudenta.java=UTF-8
+encoding//src/listeners/AboutListener.java=UTF-8
 encoding//src/model/BazaOcena.java=UTF-8
 encoding//src/model/BazaStudenata.java=UTF-8
+encoding//src/model/Ocena.java=UTF-8
+encoding//src/view/MyMenuBar.java=UTF-8
