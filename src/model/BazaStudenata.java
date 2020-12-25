@@ -39,8 +39,8 @@ public static BazaStudenata instance = null;
 	
 	private void initStudenti() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student(1,"Perić", "Pera", 1, "B", 8.16));
-		studenti.add(new Student(2,"Marković", "Marko", 4, "S" , 7.17));
+		studenti.add(new Student("RA-1-2017","Perić", "Pera", "1", "B", 8.16));
+		studenti.add(new Student("RA-2-2017","Marković", "Marko", "4", "S" , 7.17));
 
 	}
 	
@@ -90,7 +90,7 @@ public static BazaStudenata instance = null;
 	}
 
 	public void dodajStudenta(String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
+			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
 			String string, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
 		
 		this.studenti.add(new Student( prezimeSt,  imeSt,  datumRodjenjaSt,  adresaStanovanjaSt,
@@ -98,7 +98,7 @@ public static BazaStudenata instance = null;
 				prOcena, polozeniIspiti, nepolozeniIspiti) );
 	}
 	public void izmeniStudenta(int row,String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
+			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
 			String string, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
 		
 		Student student = BazaStudenata.getInstance().getRow(row);
@@ -128,14 +128,14 @@ public static BazaStudenata instance = null;
 
 
 	public void dodajStudenta(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
-			String text6, String text7, int parseInt, String text8, String text9, String text10) {
+			String parseInt, String text8, String text9, String text10) {
 		// TODO Auto-generated method stub
 		this.studenti.add(new Student( text,  text2,  datumRodjenja,  text3,
-				text4, text5, text6, text7,  parseInt, text8,
+				text4, text5 ,  parseInt, text8,
 				text9,text10) );
 		
 	}
-	
+
 	
 	
 }

@@ -10,10 +10,12 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.JComboBox;
 
 import controller.ControllerStudenti;
 import view.GlavniProzor;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -42,7 +44,7 @@ public class DialogDodajStudenta extends JDialog {
 		setSize(500,500);
 		
 		final JButton potvrdi = new JButton("Potvrdi");
-		potvrdi.setEnabled(true);
+		potvrdi.setEnabled(false);
 		potvrdi.setPreferredSize(new Dimension(120, 40));
 		potvrdi.setMnemonic('p'); 
 
@@ -56,9 +58,6 @@ public class DialogDodajStudenta extends JDialog {
 		JLabel godinaUpisa = new JLabel("Godina upisa: ");
 		JLabel godinaStudija = new JLabel("Godina studija: ");
 		JLabel status = new JLabel("Status: ");
-		JLabel prOcena = new JLabel("Prosečna ocena: ");
-		JLabel polozeniIspiti = new JLabel("Polozeni ispiti: ");
-		JLabel nepolozeniIspiti = new JLabel("Nepolozeni ispiti: ");
 
 		//Insets(int top, int left, int bottom, int right)
 		Insets insets = new Insets(10,0,0,0);
@@ -73,10 +72,10 @@ public class DialogDodajStudenta extends JDialog {
 		addComponent(this, godinaUpisa, 0, 7, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, godinaStudija, 0, 8, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, status, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, prOcena, 0, 10, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, polozeniIspiti, 0, 11, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, nepolozeniIspiti, 0, 12, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 
+		String[] combo = { "B", "S"};
+		String[] godina= {"prva","druga","treća","četvrta"};
+		
 		final JTextField txtFieldIme = new JTextField();
 		final JTextField txtFieldPrezime = new JTextField();
 		final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
@@ -85,14 +84,12 @@ public class DialogDodajStudenta extends JDialog {
 		final JTextField txtFieldEmail = new JTextField();
 		final JTextField txtFieldBrIndeksa = new JTextField();
 		final JTextField txtFieldGodinaUpisa = new JTextField();
-		final JTextField txtFieldGodinaStudija = new JTextField();
-		final JTextField txtFieldstatus = new JTextField();
-		final JTextField txtFieldprOcena = new JTextField();
-		final JTextField txtFieldpolozeniIspiti = new JTextField();
-		final JTextField txtFieldnepolozeniIspiti = new JTextField();
+		final JComboBox comboStatus = new JComboBox(combo);
+		final JComboBox GodinaStudija=new JComboBox(godina);
 
-		
-		
+
+		comboStatus.setBackground(Color.WHITE);
+		GodinaStudija.setBackground(Color.WHITE);
 		KeyListener myKeyListenerBrIndeksa = new KeyListener() {
 
 			@Override
@@ -149,6 +146,14 @@ public class DialogDodajStudenta extends JDialog {
 			@Override
 			public void focusLost(FocusEvent arg0) {
 				// TODO Auto-generated method stub
+				if(!(txtFieldIme.getText().isEmpty() || txtFieldPrezime.getText().isEmpty() || 
+						txtFieldAdresaStanovanja.getText().isEmpty() || txtFieldBrTelefona.getText().isEmpty() || txtFieldEmail.getText().isEmpty() || 
+						txtFieldBrIndeksa.getText().isEmpty() || txtFieldGodinaUpisa.getText().isEmpty() || ((String)GodinaStudija.getSelectedItem()).isEmpty() ||
+						((String)comboStatus.getSelectedItem()).isEmpty())) 
+				{
+					
+					potvrdi.setEnabled(true);
+				}
 					
 			}
 		};
@@ -161,11 +166,8 @@ public class DialogDodajStudenta extends JDialog {
 		txtFieldEmail.addFocusListener(myFocusListener);
 		txtFieldBrIndeksa.addFocusListener(myFocusListener);
 		txtFieldGodinaUpisa.addFocusListener(myFocusListener);
-		txtFieldGodinaStudija.addFocusListener(myFocusListener);
-		txtFieldstatus.addFocusListener(myFocusListener);
-		txtFieldprOcena.addFocusListener(myFocusListener);
-		txtFieldpolozeniIspiti.addFocusListener(myFocusListener);
-		txtFieldnepolozeniIspiti.addFocusListener(myFocusListener);
+		GodinaStudija.addFocusListener(myFocusListener);
+		comboStatus.addFocusListener(myFocusListener);
 		
 
 		DocumentListener myDocumentListener = new DocumentListener() {
@@ -199,11 +201,8 @@ public class DialogDodajStudenta extends JDialog {
 		addComponent(this, txtFieldEmail, 1, 5, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldBrIndeksa, 1, 6, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldGodinaUpisa, 1, 7, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldGodinaStudija, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldstatus, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldprOcena, 1, 10, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldpolozeniIspiti, 1, 11, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldnepolozeniIspiti, 1, 12, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, GodinaStudija, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, comboStatus, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 
 		JPanel panel = new JPanel();
 		
@@ -240,9 +239,8 @@ public class DialogDodajStudenta extends JDialog {
 			}
 			
 			ControllerStudenti.getInstance().dodajStudenta(txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
-					txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldprOcena.getText(),  txtFieldstatus.getText(),Integer.parseInt(txtFieldBrIndeksa.getText()),txtFieldprOcena.getText(), txtFieldpolozeniIspiti.getText(), txtFieldnepolozeniIspiti.getText());
-			
-			//TabStudent.getInstance().azurirajPrikaz();
+					txtFieldBrTelefona.getText(), txtFieldEmail.getText(),txtFieldBrIndeksa.getText(), (String)GodinaStudija.getSelectedItem(), 
+					(String)comboStatus.getSelectedItem(),txtFieldGodinaUpisa.getText());
 			
 			dispose();
 		}
@@ -272,7 +270,8 @@ public class DialogDodajStudenta extends JDialog {
 		GridBagConstraints g = new GridBagConstraints(x, y, width, height, weightx, weighty, anchor, fill, insets, 0, 0);
 		container.add(component, g);	
 	}
-	
+
+
 	public static boolean isValid(String email) 
     { 
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
@@ -290,7 +289,9 @@ public class DialogDodajStudenta extends JDialog {
 
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji, https://docs.oracle.com/javase/7/docs/api/java/awt/Dialog.html
  *https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html 
- *https://www.geeksforgeeks.org/check-email-address-valid-not-java/*/
+ *https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+ *https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
+ **/
 
 	
 }

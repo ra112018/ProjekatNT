@@ -24,7 +24,7 @@ public class ControllerStudenti {
 	private ControllerStudenti() {}
 	
 		
-	public boolean daLiProfesorPostojiProvera(int brIndeksa) {
+	public boolean daLiProfesorPostojiProvera(String brIndeksa) {
 			for(Student s : BazaStudenata.getInstance().getStudent()) {
 				if(s.getBrIndeksa()==brIndeksa) {
 					return true;
@@ -35,7 +35,7 @@ public class ControllerStudenti {
 	
 	
 	public void dodajStudenta(String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
+			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
 			String status, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
 		 {
 		
@@ -56,11 +56,12 @@ public class ControllerStudenti {
 	}
 
 	public void dodajStudenta(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
-			String text6, String text7, int parseInt, String text8, String text9, String text10) {
+			String parseInt, String text8, String text9, String text10) {
 		// TODO Auto-generated method stub
 		BazaStudenata.getInstance().dodajStudenta( text,  text2,  datumRodjenja,  text3,
-		text4, text5, text6, text7,  parseInt, text8,
+		text4, text5, parseInt, text8,
 		text9,text10) ;
 		
 	}
+
 }

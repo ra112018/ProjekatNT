@@ -11,9 +11,9 @@ public class Student {
 	private String adresaStanovanjaSt;
 	private String kontaktTelefonSt;
 	private String eMailAdresaSt;
-	private int brIndeksa;
-	private int godinaUpisa;
-	private int godinaStudija;
+	private String brIndeksa;
+	private String godinaUpisa;
+	private String godinaStudija;
 	enum Status {B("B"),S("S");
 		public final String label;
 		private Status(String label) {
@@ -27,7 +27,7 @@ public class Student {
 	
 	
 	
-	public Student(String prezimeSt, String imeSt, int brIndeksa) {
+	public Student(String prezimeSt, String imeSt, String brIndeksa) {
 		super();
 		this.prezimeSt = prezimeSt;
 		this.imeSt = imeSt;
@@ -35,17 +35,7 @@ public class Student {
 	}
 
 
-	public Student(String prezimeSt, String imeSt, int brIndeksa, int godinaStudija, String string, double prOcena) {
-		super();
-		this.prezimeSt = prezimeSt;
-		this.imeSt = imeSt;
-		this.brIndeksa = brIndeksa;
-		this.godinaStudija = godinaStudija;
-		
-		this.status = extracted(string);
-		this.prOcena = prOcena;
-	}
-	public Student(int brIndeksa,String prezimeSt, String imeSt, int godinaStudija, String string, double prOcena) {
+	public Student(String prezimeSt, String imeSt, String brIndeksa, String godinaStudija, String string, double prOcena) {
 		super();
 		this.prezimeSt = prezimeSt;
 		this.imeSt = imeSt;
@@ -63,7 +53,7 @@ public class Student {
 
 
 	public Student(String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
+			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
 			double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		super();
 		this.prezimeSt = prezimeSt;
@@ -82,7 +72,7 @@ public class Student {
 
 
 	public Student(String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, int brIndeksa, int godinaUpisa, int godinaStudija,
+			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
 			String string, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		super();
 		this.prezimeSt = prezimeSt;
@@ -108,7 +98,7 @@ public class Student {
 	}
 
 	public Student(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
-			String text6, String text7, int parseInt, String text8, String text9, String text10) {
+			String text6, String text7, String parseInt, String text8, String text9, String text10) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.prezimeSt = text;
@@ -117,11 +107,27 @@ public class Student {
 		this.adresaStanovanjaSt = text3;
 		this.kontaktTelefonSt = text4;
 		this.eMailAdresaSt = text5;
-		this.brIndeksa = Integer.parseInt(text6);
-		this.godinaUpisa = Integer.parseInt(text7);
-		this.godinaStudija = Integer.parseInt(text8);
+		this.brIndeksa = text6;
+		this.godinaUpisa = text7;
+		this.godinaStudija = text8;
 		this.status = extracted(text9);
 		this.prOcena = Integer.parseInt(text10);
+	}
+
+	public Student(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
+			String parseInt, String text8, String text9, String text10) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.prezimeSt = text;
+		this.imeSt = text2;
+		this.datumRodjenjaSt = datumRodjenja;
+		this.adresaStanovanjaSt = text3;
+		this.kontaktTelefonSt = text4;
+		this.eMailAdresaSt = text5;
+		this.brIndeksa = parseInt;
+		this.godinaUpisa = text8;
+		this.godinaStudija = text9;
+		this.status = extracted(text10);
 	}
 
 
@@ -185,32 +191,32 @@ public class Student {
 	}
 
 
-	public int getBrIndeksa() {
+	public String getBrIndeksa() {
 		return brIndeksa;
 	}
 
 
-	public void setBrIndeksa(int brIndeksa) {
+	public void setBrIndeksa(String brIndeksa) {
 		this.brIndeksa = brIndeksa;
 	}
 
 
-	public int getGodinaUpisa() {
+	public String getGodinaUpisa() {
 		return godinaUpisa;
 	}
 
 
-	public void setGodinaUpisa(int godinaUpisa) {
+	public void setGodinaUpisa(String godinaUpisa) {
 		this.godinaUpisa = godinaUpisa;
 	}
 
 
-	public int getGodinaStudija() {
+	public String getGodinaStudija() {
 		return godinaStudija;
 	}
 
 
-	public void setGodinaStudija(int godinaStudija) {
+	public void setGodinaStudija(String godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 
@@ -253,8 +259,5 @@ public class Student {
 	public void setNepolozeniIspiti(List<Predmet> nepolozeniIspiti) {
 		this.nepolozeniIspiti = nepolozeniIspiti;
 	}
-	
-	
-	
 
 }
