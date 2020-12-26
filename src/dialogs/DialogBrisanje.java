@@ -54,6 +54,7 @@ public class DialogBrisanje extends JDialog{
 		panel.setBorder(new EmptyBorder(7,7,7,7));
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
+		
 		if(brisemo.equals("predmet")) {
 			
 			JTextArea txtArea = new JTextArea();

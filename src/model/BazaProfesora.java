@@ -130,7 +130,6 @@ public class BazaProfesora {
 		}
 	}
 	
-	
 	public void obrisiPredmetProfesoru(Profesor profesor, Predmet predmet) {
 		
 		Profesor prof = null;

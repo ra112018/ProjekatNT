@@ -17,11 +17,10 @@ public class ControllerPredmeti {
 	
 	private ControllerPredmeti() {}
 	
-	
-	public void obrisiPredmet(int selektovanRed) {
+	public void obrisiPredmet(int selectedRow) {
 		
-		Predmet predmet = BazaPredmeta.getInstance().getRow(selektovanRed);
+		Predmet predmet = BazaPredmeta.getInstance().getRow(selectedRow);
 		BazaPredmeta.getInstance().brisanjePredmeta(predmet);
-		
 	}
+
 }

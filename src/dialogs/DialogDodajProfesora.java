@@ -1,6 +1,7 @@
 package dialogs;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -14,6 +15,7 @@ import javax.swing.text.MaskFormatter;
 import controller.ControllerProfesori;
 import view.GlavniProzor;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -49,14 +51,16 @@ public class DialogDodajProfesora extends JDialog {
 		super(GlavniProzor.getInstance(), "Dodaj profesora", true);
 		this.setLayout(new GridBagLayout());
 		setSize(500,500);
+		 
 		
 		final JButton potvrdi = new JButton("Potvrdi");
 		potvrdi.setEnabled(false);
 		potvrdi.setPreferredSize(new Dimension(100, 40));
+		potvrdi.setMnemonic('p');
 		
 		JLabel ime = new JLabel("Ime: ");
 		JLabel prezime = new JLabel("Prezime: ");
-		//JLabel datumRodjenja = new JLabel("Datum rodjenja: ");
+		JLabel datumRodjenja = new JLabel("Datum rodjenja: ");
 		JLabel adresaStanovanja = new JLabel("Adresa stanovanja: ");
 		JLabel brTelefona = new JLabel("Broj telefona: ");
 		JLabel eMail = new JLabel("Email: ");
@@ -64,63 +68,41 @@ public class DialogDodajProfesora extends JDialog {
 		JLabel licnaKarta = new JLabel("Licna karta: ");
 		JLabel titula = new JLabel("Titula: ");
 		JLabel zvanje = new JLabel("Zvanje: ");
-		JLabel datumRodjenja = new JLabel("Datum rodjenja: ");
+		//JLabel datumRodjenja = new JLabel("Datum rodjenja: ");
 		
 		//Insets(int top, int left, int bottom, int right)
 		Insets insets = new Insets(10,0,0,0);
 		
 		addComponent(this, ime, 0, 0, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, prezime, 0, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		//addComponent(this, datumRodjenja, 0, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, adresaStanovanja, 0, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, brTelefona, 0, 3, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, eMail, 0, 4, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, adresaKancelarije, 0, 5, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, licnaKarta, 0, 6, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, titula, 0, 7, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, zvanje, 0, 8, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		addComponent(this, datumRodjenja, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, datumRodjenja, 0, 2, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, adresaStanovanja, 0, 3, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, brTelefona, 0, 4, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, eMail, 0, 5, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, adresaKancelarije, 0, 6, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, licnaKarta, 0, 7, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, titula, 0, 8, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		addComponent(this, zvanje, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		//addComponent(this, datumRodjenja, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
+		
+		String[] comboT = { "Dr", "Profesor Dr"};
+		String[] comboZ = {"Redovni profesor", "Vanredni profesor"};
+		
 		
 		final JTextField txtFieldIme = new JTextField();
 		final JTextField txtFieldPrezime = new JTextField();
-		//final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
+		final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
 		final JTextField txtFieldAdresaStanovanja = new JTextField();
 		final JTextField txtFieldBrTelefona = new JTextField();
 		final JTextField txtFieldEmail = new JTextField();
 		final JTextField txtFieldAdresaKancelarije = new JTextField();
 		final JTextField txtFieldLicnaKarta = new JTextField();
-		final JTextField txtFieldTitula = new JTextField();
-		final JTextField txtFieldZvanje = new JTextField();
-		final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
+		final JComboBox comboTitula = new JComboBox(comboT);
+		final JComboBox comboZvanje = new JComboBox(comboZ);
+		//final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
 		
-		/*
-		 * Ovo je bio pokusaj sa enumom Titula
-		comboBox = new JComboBox<Titula>(Titula.values());
-		comboBox.setSelectedItem(profesor.getTitulaProf());
-		
-		String titula1 = comboBox.getSelectedItem().toString();
-		Component titula2 = (Component) Titula.valueOf(titula1);
-		*/
-
-		/*
-		 * Ovo je bio pokusaj bez enuma Titula
-		
-		String[] comboTitula = { "Dr", "Profesor Dr", };
-		final JComboBox<String> combo = new JComboBox<String>(comboTitula);
-		combo.setSelectedIndex(0);
-		
-		combo.addItemListener(new ItemListener() {
-
-			@Override
-			public void itemStateChanged(ItemEvent arg0) {
-				if (arg0.getStateChange() == ItemEvent.SELECTED) {
-				}
-			}
-		});
-		
-		final Component comboTitul = (Component) combo.getSelectedItem();
-		
-		*/
+		comboTitula.setBackground(Color.WHITE);
+		comboZvanje.setBackground(Color.WHITE);
 		
 		
 		KeyListener myKeyListenerLicnaKarta = new KeyListener() {
@@ -184,8 +166,8 @@ public class DialogDodajProfesora extends JDialog {
 				// TODO Auto-generated method stub
 				if(!(txtFieldIme.getText().isEmpty() || txtFieldPrezime.getText().isEmpty() || 
 						txtFieldAdresaStanovanja.getText().isEmpty() || txtFieldBrTelefona.getText().isEmpty() || txtFieldEmail.getText().isEmpty() || 
-						txtFieldAdresaKancelarije.getText().isEmpty() || txtFieldLicnaKarta.getText().isEmpty() || txtFieldTitula.getText().isEmpty() ||
-						txtFieldZvanje.getText().isEmpty())) 
+						txtFieldAdresaKancelarije.getText().isEmpty() || txtFieldLicnaKarta.getText().isEmpty() || ((String)comboTitula.getSelectedItem()).isEmpty() ||
+						((String)comboZvanje.getSelectedItem()).isEmpty())) 
 				{
 					
 					potvrdi.setEnabled(true);
@@ -203,8 +185,8 @@ public class DialogDodajProfesora extends JDialog {
 		txtFieldEmail.addFocusListener(myFocusListener);
 		txtFieldAdresaKancelarije.addFocusListener(myFocusListener);
 		txtFieldLicnaKarta.addFocusListener(myFocusListener);
-		txtFieldTitula.addFocusListener(myFocusListener);
-		txtFieldZvanje.addFocusListener(myFocusListener);
+		comboTitula.addFocusListener(myFocusListener);
+		comboZvanje.addFocusListener(myFocusListener);
 		
 		txtFieldLicnaKarta.addKeyListener(myKeyListenerLicnaKarta);
 		
@@ -241,15 +223,15 @@ public class DialogDodajProfesora extends JDialog {
 		
 		addComponent(this, txtFieldIme, 1, 0, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldPrezime, 1, 1, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		//addComponent(this, txtFieldDatumRodjenja, 1, 2, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldAdresaStanovanja, 1, 2, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldBrTelefona, 1, 3, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldEmail, 1, 4, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldAdresaKancelarije, 1, 5, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldLicnaKarta, 1, 6, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldTitula, 1, 7, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldZvanje, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldDatumRodjenja, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, txtFieldDatumRodjenja, 1, 2, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, txtFieldAdresaStanovanja, 1, 3, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, txtFieldBrTelefona, 1, 4, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, txtFieldEmail, 1, 5, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, txtFieldAdresaKancelarije, 1, 6, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, txtFieldLicnaKarta, 1, 7, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, comboTitula, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, comboZvanje, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		//addComponent(this, txtFieldDatumRodjenja, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		
 		
 		JPanel panel = new JPanel();
@@ -285,9 +267,8 @@ public class DialogDodajProfesora extends JDialog {
 				}
 				
 				ControllerProfesori.getInstance().dodajProfesora(txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
-						txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldAdresaKancelarije.getText(), Integer.parseInt(txtFieldLicnaKarta.getText()), txtFieldTitula.getText(), txtFieldZvanje.getText());
+						txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldAdresaKancelarije.getText(), Integer.parseInt(txtFieldLicnaKarta.getText()), (comboTitula.getSelectedItem()).toString(), (comboZvanje.getSelectedItem()).toString());
 				
-				//TabProfesor.getInstance().azurirajPrikaz();
 				
 				dispose();
 			}
