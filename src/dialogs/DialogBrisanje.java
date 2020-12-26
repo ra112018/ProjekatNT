@@ -15,7 +15,9 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import controller.ControllerPredmeti;
+import controller.ControllerStudenti;
 import view.TabPredmet;
+import view.TabStudent;
 
 public class DialogBrisanje extends JDialog{
 
@@ -35,6 +37,14 @@ public class DialogBrisanje extends JDialog{
 		if(brisemo.equals("predmet")) {
 			setTitle("Brisanje predmeta");
 		}
+		else if(brisemo.equals("student")) {
+			setTitle("Brisanje studenta");
+			JTextArea txtArea = new JTextArea();
+			txtArea.setEditable(false);
+			txtArea.setText("Da li ste  sigurni da zelite da obrisete ovog studenta?");
+			txtArea.setFocusable(false);
+			panel.add(txtArea);
+		}
 		
 		setBounds(100,100,450,120);
 		
@@ -53,6 +63,7 @@ public class DialogBrisanje extends JDialog{
 			panel.add(txtArea);
 			
 		}
+		
 		
 		JPanel buttonsPane = new JPanel();
 		buttonsPane.setBackground(Color.WHITE);
@@ -86,11 +97,17 @@ public class DialogBrisanje extends JDialog{
 			
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-				   if(brisemo.equals("predmet"));
+				   if(brisemo.equals("predmet")) {
 				      ControllerPredmeti.getInstance().obrisiPredmet(index);
 				
 				      TabPredmet.getInstance().azurirajPrikaz();
 				      dispose();
+				   }
+				   else if(brisemo.equals("student")) {
+					   ControllerStudenti.getInstance().obrisiStudenta(index);
+					   TabStudent.getInstance().azurirajPrikaz();
+					   dispose();
+				   }
 				}
 			}
 		});
@@ -103,6 +120,11 @@ public class DialogBrisanje extends JDialog{
 					ControllerPredmeti.getInstance().obrisiPredmet(index);
 					
 					TabPredmet.getInstance().azurirajPrikaz();
+					dispose();
+				}
+				else if(brisemo.equals("student")) {
+					ControllerStudenti.getInstance().obrisiStudenta(index);
+					TabStudent.getInstance().azurirajPrikaz();
 					dispose();
 				}
 			}

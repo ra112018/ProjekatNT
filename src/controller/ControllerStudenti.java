@@ -1,15 +1,14 @@
 package controller;
 
 import java.util.Date;
-import java.util.List;
 
 import model.BazaStudenata;
-import model.Ocena;
-import model.Predmet;
+
 import model.Student;
+import view.TabStudent;
 
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji JTableMVCSimple */
-
+/**REFERENCA: https://www.youtube.com/watch?v=dTVVa2gfht8 */
 public class ControllerStudenti {
 
 	private static ControllerStudenti instance = null;
@@ -24,7 +23,7 @@ public class ControllerStudenti {
 	private ControllerStudenti() {}
 	
 		
-	public boolean daLiProfesorPostojiProvera(String brIndeksa) {
+	public boolean daLiStudentPostojiProvera(String brIndeksa) {
 			for(Student s : BazaStudenata.getInstance().getStudent()) {
 				if(s.getBrIndeksa()==brIndeksa) {
 					return true;
@@ -33,17 +32,6 @@ public class ControllerStudenti {
 			return false;
 		}
 	
-	
-	public void dodajStudenta(String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
-			String status, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
-		 {
-		
-		BazaStudenata.getInstance().dodajStudenta( prezimeSt,  imeSt,  datumRodjenjaSt,  adresaStanovanjaSt,
-				kontaktTelefonSt, eMailAdresaSt, brIndeksa, godinaUpisa,  godinaStudija, status,
-				prOcena, polozeniIspiti, nepolozeniIspiti) ;
-		 }
-	}
 	
 	public void izmeniStudenta(int row, String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
 			String kontaktTelefonSt, String eMailAdresaSt, String string, String string2, String string3,
@@ -55,12 +43,20 @@ public class ControllerStudenti {
 		
 	}
 
-	public void dodajStudenta(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
-			String parseInt, String text8, String text9, String text10) {
+	public void dodajStudenta(String indeks, String ime, String prz, Date datumRodjenja, String adresa, String telefon,
+			String email, String godStudija, String status, String godUpisa) {
 		// TODO Auto-generated method stub
-		BazaStudenata.getInstance().dodajStudenta( text,  text2,  datumRodjenja,  text3,
-		text4, text5, parseInt, text8,
-		text9,text10) ;
+		BazaStudenata.getInstance().dodajStudenta( indeks,  ime, prz, datumRodjenja, 
+		adresa, telefon, email, godStudija,
+		status,godUpisa) ;
+		TabStudent.getInstance().azurirajPrikaz();
+
+	}
+	public void obrisiStudenta(int selectedRow) {
+		Student student = BazaStudenata.getInstance().getRow(selectedRow);
+		BazaStudenata.getInstance().obrisiStudenta(student);
+		
+		TabStudent.getInstance().azurirajPrikaz();
 		
 	}
 

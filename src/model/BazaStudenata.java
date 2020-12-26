@@ -2,12 +2,13 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import model.Student.Status;
 
 
-/**REFERENCA: RaÄ‘eno po uzoru na vezbe, JTableMVCSimple, JTableMVCAdvanced, koleginicinu bazu */
+/**REFERENCA: Rađeno po uzoru na vezbe, JTableMVCSimple, JTableMVCAdvanced, koleginicinu bazu */
 
 public class BazaStudenata {
 public static BazaStudenata instance = null;
@@ -39,8 +40,8 @@ public static BazaStudenata instance = null;
 	
 	private void initStudenti() {
 		this.studenti = new ArrayList<Student>();
-		studenti.add(new Student("RA-1-2017","Perić", "Pera", "1", "B", 8.16));
-		studenti.add(new Student("RA-2-2017","Marković", "Marko", "4", "S" , 7.17));
+		studenti.add(new Student("Pera","Perić","RA-1-2017", "prva", "B", 8.16));
+		studenti.add(new Student("Marković", "Marko","RA-2-2017", "četvrta", "S" , 7.17));
 
 	}
 	
@@ -70,18 +71,18 @@ public static BazaStudenata instance = null;
 		switch (column) {
 
 		case 0:
-			return String.valueOf(studenti.getBrIndeksa());	
+			return studenti.getBrIndeksa();	
 		case 1:
-			return studenti.getPrezimeSt();
+			return studenti.getImeSt();
 		case 2:
-			return studenti.getImeSt();	
+			return studenti.getPrezimeSt();	
 		case 3:
 			return String.valueOf(studenti.getGodinaStudija());
 		case 4:
 			return String.valueOf(studenti.getStatus());
 		case 5:
 			return String.valueOf(studenti.getPrOcena());
-
+		
 
 	    default:
 	    	return null;
@@ -89,27 +90,19 @@ public static BazaStudenata instance = null;
 	
 	}
 
-	public void dodajStudenta(String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
-			String string, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
-		
-		this.studenti.add(new Student( prezimeSt,  imeSt,  datumRodjenjaSt,  adresaStanovanjaSt,
-				kontaktTelefonSt, eMailAdresaSt, brIndeksa, godinaUpisa,  godinaStudija, string,
-				prOcena, polozeniIspiti, nepolozeniIspiti) );
-	}
 	public void izmeniStudenta(int row,String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
 			String kontaktTelefonSt, String eMailAdresaSt, String brIndeksa, String godinaUpisa, String godinaStudija,
 			String string, double prOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
 		
 		Student student = BazaStudenata.getInstance().getRow(row);
 		
+		student.setBrIndeksa(brIndeksa);
 		student.setImeSt(imeSt);
 		student.setPrezimeSt(prezimeSt);
 		student.setDatumRodjenjaSt(datumRodjenjaSt);
 		student.setAdresaStanovanjaSt(adresaStanovanjaSt);
 		student.setKontaktTelefonSt(kontaktTelefonSt);
 		student.seteMailAdresaSt(eMailAdresaSt);
-		student.setBrIndeksa(brIndeksa);
 		student.setGodinaUpisa(godinaUpisa);
 		student.setGodinaStudija(godinaStudija);
 		student.setStatus(Status.valueOf(string));
@@ -118,8 +111,7 @@ public static BazaStudenata instance = null;
 		student.setNepolozeniIspiti(nepolozeniIspiti);
 	}
 
-
-	public void izmeniStudenta(int row, String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
+	public void izmeniStudenta(int row, String imeSt, String przSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
 			String kontaktTelefonSt, String eMailAdresaSt, String string, String string2, String string3, String status,
 			String string4, String string5, String string6) {
 		// TODO Auto-generated method stub
@@ -127,15 +119,27 @@ public static BazaStudenata instance = null;
 	}
 
 
-	public void dodajStudenta(String text, String text2, Date datumRodjenja, String text3, String text4, String text5,
-			String parseInt, String text8, String text9, String text10) {
+	public void dodajStudenta(String indeks, String ime,  String prz,Date datumRodjenja, String adresa, String telefon,
+			String email, String godStudija, String status, String godUpisa) {
 		// TODO Auto-generated method stub
-		this.studenti.add(new Student( text,  text2,  datumRodjenja,  text3,
-				text4, text5 ,  parseInt, text8,
-				text9,text10) );
+		this.studenti.add(new Student( indeks,  ime,  prz,  datumRodjenja,
+				adresa, telefon ,  email, godStudija,
+				status,godUpisa) );
 		
 	}
-
+	public void obrisiStudenta(Student student) {
+		
+		
+		Iterator<Student> iter = this.studenti.listIterator();
+		
+		while(iter.hasNext()) {
+			Student s = iter.next();
+			if(s == student) {
+				iter.remove();
+			}
+		}
+		
+	}
 	
 	
 }

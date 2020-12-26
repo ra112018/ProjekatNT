@@ -73,6 +73,7 @@ public class DialogDodajStudenta extends JDialog {
 		addComponent(this, godinaStudija, 0, 8, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, status, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 
+
 		String[] combo = { "B", "S"};
 		String[] godina= {"prva","druga","treća","četvrta"};
 		
@@ -86,7 +87,7 @@ public class DialogDodajStudenta extends JDialog {
 		final JTextField txtFieldGodinaUpisa = new JTextField();
 		final JComboBox comboStatus = new JComboBox(combo);
 		final JComboBox GodinaStudija=new JComboBox(godina);
-
+		
 
 		comboStatus.setBackground(Color.WHITE);
 		GodinaStudija.setBackground(Color.WHITE);
@@ -238,9 +239,9 @@ public class DialogDodajStudenta extends JDialog {
 				e1.printStackTrace();
 			}
 			
-			ControllerStudenti.getInstance().dodajStudenta(txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
-					txtFieldBrTelefona.getText(), txtFieldEmail.getText(),txtFieldBrIndeksa.getText(), (String)GodinaStudija.getSelectedItem(), 
-					(String)comboStatus.getSelectedItem(),txtFieldGodinaUpisa.getText());
+			ControllerStudenti.getInstance().dodajStudenta(txtFieldBrIndeksa.getText(),txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
+					txtFieldBrTelefona.getText(), txtFieldEmail.getText(), (GodinaStudija.getSelectedItem()).toString(), 
+					(comboStatus.getSelectedItem()).toString(),txtFieldGodinaUpisa.getText());
 			
 			dispose();
 		}

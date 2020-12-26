@@ -15,7 +15,7 @@ public class AbstractTableModelStudent extends AbstractTableModel{
 	
 	public AbstractTableModelStudent() {}
 
-	//vraca broj profesora koji se trenutno imamo
+	//vraca broj studenata koji se trenutno imamo
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub

@@ -83,11 +83,9 @@ public class MyMenuBar extends JMenuBar {
 		}else if(trenutniTab==2) {
 			miDelete.addActionListener(new ObrisiPredmetListener());
 		}
-		if(trenutniTab==0) {
+		else if(trenutniTab==0) {
 			miNew.addActionListener(new DodajStudentaListener());
 			miEdit.addActionListener(new IzmeniStudentaListener());
-		}else if(trenutniTab==2) {
-			miDelete.addActionListener(new ObrisiPredmetListener());
 		}
 	}
 

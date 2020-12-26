@@ -7,7 +7,7 @@ import dialogs.DialogDodajStudenta;
 
 public class DodajStudentaListener implements ActionListener {
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {			/* REFERENCA: https://docs.oracle.com/javase/tutorial/uiswing/events/actionlistener.html */
 		// TODO Auto-generated method stub
 		DialogDodajStudenta digDodajStudenta = new DialogDodajStudenta();
 		digDodajStudenta.setVisible(true);

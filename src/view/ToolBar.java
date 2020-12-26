@@ -24,6 +24,7 @@ import listeners.IzmeniProfesoraListener;
 import listeners.IzmeniStudentaListener;
 import listeners.ObrisiPredmetListener;
 import listeners.DodajStudentaListener;
+import listeners.ObrisiStudentaListener;
 
 public class ToolBar extends JToolBar {
 		
@@ -82,18 +83,57 @@ public class ToolBar extends JToolBar {
 		setFloatable(false);
 		setBackground(new Color(192, 192, 192));
 		
+		
+		
+		
 		if(trenutniTab ==0) {
 			btnDodaj.addActionListener(new DodajStudentaListener());
 			btnIzmena.addActionListener(new IzmeniStudentaListener());
+			btnBrisanje.addActionListener(new ObrisiStudentaListener());
+
 			
-			
-			searchInput.addKeyListener(new KeyAdapter() {
+		searchInput.addKeyListener(new KeyAdapter() {
 				
-				public void keyPressed(KeyEvent e) {
-					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-						PretragaTable pretraga = new PretragaTable(tabelaStudenata, trenutniTab);
-						pretraga.pretragaStudenata(searchInput.getText());
-					}}});}
+		public void keyPressed(KeyEvent e) {
+			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				PretragaTable pretraga = new PretragaTable(tabelaStudenata, trenutniTab);
+				pretraga.pretragaStudenata(searchInput.getText());
+							}
+						}
+					});
+						
+		pretrazi.addActionListener(new ActionListener() {
+							
+			public void actionPerformed(ActionEvent e) {
+				PretragaTable pretraga = new PretragaTable(tabelaStudenata, trenutniTab);
+				pretraga.pretragaStudenata(searchInput.getText());
+			}
+			});
+							
+			searchInput.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
+								
+							}
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				if(searchInput.getText().equals("")) {
+					PretragaTable azurirajStudenti= new PretragaTable(tabelaStudenata, 1);
+					azurirajStudenti.osStudenti("");
+					}
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
+					
+				}});}
+		
+		
+		
 		else if(trenutniTab==1) {
 			btnDodaj.addActionListener(new DodajProfesoraListener());
 			btnIzmena.addActionListener(new IzmeniProfesoraListener());
@@ -143,57 +183,6 @@ public class ToolBar extends JToolBar {
 				}
 				
 			});
-		}else if (trenutniTab==0) {
-			btnDodaj.addActionListener(new DodajStudentaListener());
-			//btnIzmena.addActionListener(new IzmeniStudentaListener());
-			
-			
-			
-			searchInput.addKeyListener(new KeyAdapter() {
-				
-				public void keyPressed(KeyEvent e) {
-					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-						PretragaTable pretraga = new PretragaTable(tabelaStudenata, trenutniTab);
-						//pretraga.pretragaStudenata(searchInput.getText());
-					}
-				}
-			});
-			
-			pretrazi.addActionListener(new ActionListener() {
-				
-				public void actionPerformed(ActionEvent e) {
-					PretragaTable pretraga = new PretragaTable(tabelaProf, trenutniTab);
-					//pretraga.pretragaStudenata(searchInput.getText());
-				}
-			});
-			
-			
-			searchInput.getDocument().addDocumentListener(new DocumentListener() {
-
-				@Override
-				public void insertUpdate(DocumentEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-
-				@Override
-				public void removeUpdate(DocumentEvent e) {
-					// TODO Auto-generated method stub
-					if(searchInput.getText().equals("")) {
-						PretragaTable azurirajStudenti = new PretragaTable(tabelaStudenata, 1);
-						azurirajStudenti.osStudenti("");
-					}
-				}
-
-				@Override
-				public void changedUpdate(DocumentEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-			});
-			
-			
 			
 		}else if (trenutniTab==2) {
 		//	btnBrisanje.addActionListener(new ObrisiPredmetListener());
