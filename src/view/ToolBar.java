@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import java.io.File;
+
 import controller.PretragaTable;
 
 import javax.swing.Box;
@@ -28,7 +30,8 @@ import listeners.ObrisiStudentaListener;
 
 public class ToolBar extends JToolBar {
 		
-	/**REFERENCA: Radjeno po uzoru na Vezbe,Termin3 */
+	/**REFERENCA: Radjeno po uzoru na Vezbe,Termin3 
+	 * https://stackoverflow.com/questions/2417485/difference-between-file-separator-and-slash-in-paths*/
 	/**
 	 * 
 	 */
@@ -45,7 +48,7 @@ public class ToolBar extends JToolBar {
 		
 		JButton btnDodaj = new JButton();
 		btnDodaj.setToolTipText("Dodaj");
-		btnDodaj.setIcon(new ImageIcon("images/add.jpg"));
+		btnDodaj.setIcon(new ImageIcon("images"+File.separator+"add.jpg"));
 		add(btnDodaj);
 		btnDodaj.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
@@ -53,7 +56,7 @@ public class ToolBar extends JToolBar {
 
 		JButton btnIzmena = new JButton();
 		btnIzmena.setToolTipText("Izmeni");
-		btnIzmena.setIcon(new ImageIcon("images/edit.jpg"));
+		btnIzmena.setIcon(new ImageIcon("images"+File.separator+"edit.jpg"));
 		add(btnIzmena);
 		btnIzmena.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -61,7 +64,7 @@ public class ToolBar extends JToolBar {
 		
 		JToggleButton btnBrisanje = new JToggleButton();
 		btnBrisanje.setToolTipText("Obrisi");
-		btnBrisanje.setIcon(new ImageIcon("images/delete.jpg"));
+		btnBrisanje.setIcon(new ImageIcon("images"+File.separator+"delete.jpg"));
 		add(btnBrisanje);
         btnBrisanje.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
@@ -76,7 +79,7 @@ public class ToolBar extends JToolBar {
 		
 		JButton pretrazi = new JButton();
 		pretrazi.setToolTipText("Pretrazi");
-		pretrazi.setIcon(new ImageIcon("images/search.jpg"));
+		pretrazi.setIcon(new ImageIcon("images"+File.separator+"search.jpg"));
 		add(pretrazi);
 		pretrazi.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
