@@ -9,6 +9,7 @@ import javax.swing.KeyStroke;
 import listeners.*;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 
@@ -23,14 +24,14 @@ public class MyMenuBar extends JMenuBar {
 		add(file);
 
 		JMenuItem miNew = new JMenuItem("New", KeyEvent.VK_N);
-		miNew.setIcon(new ImageIcon("images/new.jpg"));
+		miNew.setIcon(new ImageIcon("images"+File.separator+"new.jpg"));
 		file.add(miNew);
 		miNew.setMnemonic('n');
 		KeyStroke ctrlNKeyStroke = KeyStroke.getKeyStroke("control N");
 	    miNew.setAccelerator(ctrlNKeyStroke);
 
 		JMenuItem miClose = new JMenuItem("Close",KeyEvent.VK_C);
-		miClose.setIcon(new ImageIcon("images/x.jpg"));
+		miClose.setIcon(new ImageIcon("images"+File.separator+"x.jpg"));
 		file.add(miClose);
 		miClose.setMnemonic('c');
 		KeyStroke ctrlCKeyStroke = KeyStroke.getKeyStroke("control C");
@@ -41,7 +42,7 @@ public class MyMenuBar extends JMenuBar {
 		add(edit);
 
 		JMenuItem miEdit=new JMenuItem("Edit",KeyEvent.VK_E);
-		miEdit.setIcon(new ImageIcon("images/edit.jpg"));
+		miEdit.setIcon(new ImageIcon("images"+File.separator+"edit.jpg"));
 		edit.add(miEdit);
 		miEdit.setMnemonic('e');
 
@@ -50,7 +51,7 @@ public class MyMenuBar extends JMenuBar {
 
 
 		JMenuItem miDelete=new JMenuItem("Delete",KeyEvent.VK_D);
-		miDelete.setIcon(new ImageIcon("images/deletemb.jpg"));
+		miDelete.setIcon(new ImageIcon("images"+File.separator+"deletemb.jpg"));
 		edit.add(miDelete);
 		miDelete.setMnemonic('d');
 		KeyStroke ctrlDKeyStroke = KeyStroke.getKeyStroke("control D");
@@ -61,7 +62,7 @@ public class MyMenuBar extends JMenuBar {
 		add(help);
 
 		JMenuItem miHelp=new JMenuItem("Help",KeyEvent.VK_H);
-		miHelp.setIcon(new ImageIcon("images/help.jpg"));
+		miHelp.setIcon(new ImageIcon("images"+File.separator+"help.jpg"));
 		help.add(miHelp);
 		miHelp.setMnemonic('h');
 		KeyStroke ctrlHKeyStroke = KeyStroke.getKeyStroke("control H");
@@ -69,7 +70,7 @@ public class MyMenuBar extends JMenuBar {
 	    miHelp.addActionListener(new HelpListener());
 
 		JMenuItem miAbout=new JMenuItem("About",KeyEvent.VK_A);
-		miAbout.setIcon(new ImageIcon("images/aboutmb.jpg"));
+		miAbout.setIcon(new ImageIcon("images"+File.separator+"aboutmb.jpg"));
 		help.add(miAbout);
 		miAbout.setMnemonic('a');
 		KeyStroke ctrlAKeyStroke = KeyStroke.getKeyStroke("control A");
