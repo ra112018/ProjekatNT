@@ -21,15 +21,6 @@ public class ControllerProfesori {
 	
 	private ControllerProfesori() {}
 	
-		
-	public boolean daLiProfesorPostojiProvera(String licnaKarta) {
-           try {
-        	   return BazaProfesora.getInstance().daLiProfPostojiPoLicnojKarti(Integer.parseInt(licnaKarta));
-           }catch(Exception e) {
-        	   return false;
-           }
-		}
-	
 	
 	public void dodajProfesora(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, 
 			String kontaktTelefon, String emailAdresa, String adresaKancelarije, Integer brojLicneKarte, 

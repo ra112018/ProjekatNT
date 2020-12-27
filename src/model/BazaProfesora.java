@@ -108,47 +108,4 @@ public class BazaProfesora {
 		
 	}
 	
-	public boolean daLiProfPostojiPoLicnojKarti(Integer licnaKarta) {
-		for(Profesor p : profesori) {
-			if(p.getBrojLicneKarteProf().equals(licnaKarta)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public Profesor nadjiProfPoLicnoj(String licnaKarta) {
-		try {
-			for(Profesor p : profesori) {
-				if(p.getBrojLicneKarteProf().equals(Integer.parseInt(licnaKarta))) {
-					return p;
-				}
-			}
-			return null;
-		}catch(Exception e) {
-			return null;
-		}
-	}
-	
-	public void obrisiPredmetProfesoru(Profesor profesor, Predmet predmet) {
-		
-		Profesor prof = null;
-		
-		if(profesor != null) {
-			for(int i = 0; i < profesori.size(); i++) {
-				if(profesori.get(i).getBrojLicneKarteProf().equals(profesor.getBrojLicneKarteProf())) {
-					prof = profesori.get(i);
-					break;
-				}
-			}
-			
-			for(int i = 0; i < prof.getPredmeti().size(); i++) {
-				if(prof.getPredmeti().get(i).equals(predmet.getSifraPredmeta())) {
-					prof.getPredmeti().remove(i);
-					break;
-				}
-			}
-		}
-	}
-	
 }

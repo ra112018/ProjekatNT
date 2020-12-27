@@ -91,7 +91,7 @@ public class BazaPredmeta {
 			}
 		}
 		
-		BazaProfesora.getInstance().obrisiPredmetProfesoru(predmet.getPredmetniProfesor(), predmet);
+
 	}
 
 

@@ -185,7 +185,7 @@ public class ToolBar extends JToolBar {
 			});
 			
 		}else if (trenutniTab==2) {
-		//	btnBrisanje.addActionListener(new ObrisiPredmetListener());
+			btnBrisanje.addActionListener(new ObrisiPredmetListener());
 		}
 		
 

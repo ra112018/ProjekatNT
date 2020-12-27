@@ -68,7 +68,7 @@ public class DialogDodajProfesora extends JDialog {
 		JLabel licnaKarta = new JLabel("Licna karta: ");
 		JLabel titula = new JLabel("Titula: ");
 		JLabel zvanje = new JLabel("Zvanje: ");
-		//JLabel datumRodjenja = new JLabel("Datum rodjenja: ");
+		
 		
 		//Insets(int top, int left, int bottom, int right)
 		Insets insets = new Insets(10,0,0,0);
@@ -83,7 +83,6 @@ public class DialogDodajProfesora extends JDialog {
 		addComponent(this, licnaKarta, 0, 7, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, titula, 0, 8, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		addComponent(this, zvanje, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
-		//addComponent(this, datumRodjenja, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		
 		String[] comboT = { "Dr", "Profesor Dr"};
 		String[] comboZ = {"Redovni profesor", "Vanredni profesor"};
@@ -99,7 +98,6 @@ public class DialogDodajProfesora extends JDialog {
 		final JTextField txtFieldLicnaKarta = new JTextField();
 		final JComboBox comboTitula = new JComboBox(comboT);
 		final JComboBox comboZvanje = new JComboBox(comboZ);
-		//final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatter("##-##-####"));
 		
 		comboTitula.setBackground(Color.WHITE);
 		comboZvanje.setBackground(Color.WHITE);
@@ -231,13 +229,13 @@ public class DialogDodajProfesora extends JDialog {
 		addComponent(this, txtFieldLicnaKarta, 1, 7, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, comboTitula, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, comboZvanje, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		//addComponent(this, txtFieldDatumRodjenja, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		
 		
 		JPanel panel = new JPanel();
 		
 		JButton odustani = new JButton("Odustani");
 		odustani.setPreferredSize(new Dimension(100, 40));
+		odustani.setMnemonic('o'); 
 		
 		odustani.addActionListener(new ActionListener(){
 
