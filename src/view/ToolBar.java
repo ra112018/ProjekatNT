@@ -43,6 +43,7 @@ public class ToolBar extends JToolBar {
 		super(SwingConstants.HORIZONTAL);
 		
 		final JTableProfesor tabelaProf = new JTableProfesor();
+		final JTablePredmet tabelaPredmet = new JTablePredmet();
 		final JTableStudent tabelaStudenata = new JTableStudent();
 
 		
@@ -174,7 +175,7 @@ public class ToolBar extends JToolBar {
 				public void removeUpdate(DocumentEvent e) {
 					// TODO Auto-generated method stub
 					if(searchInput.getText().equals("")) {
-						PretragaTable azurirajProfesori = new PretragaTable(tabelaProf, 1);
+						PretragaTable azurirajProfesori = new PretragaTable(tabelaProf, trenutniTab);
 						azurirajProfesori.osProfesori("");
 					}
 				}
@@ -189,6 +190,50 @@ public class ToolBar extends JToolBar {
 			
 		}else if (trenutniTab==2) {
 			btnBrisanje.addActionListener(new ObrisiPredmetListener());
+			
+			searchInput.addKeyListener(new KeyAdapter() {
+				
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						PretragaTable pretraga = new PretragaTable(tabelaPredmet, trenutniTab);
+						pretraga.pretragaPredmeta(searchInput.getText());
+					}
+				}
+			});
+			
+			pretrazi.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					PretragaTable pretraga = new PretragaTable(tabelaPredmet, trenutniTab);
+					pretraga.pretragaPredmeta(searchInput.getText());
+				}
+			});
+			
+			
+			searchInput.getDocument().addDocumentListener(new DocumentListener() {
+
+				@Override
+				public void insertUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void removeUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					if(searchInput.getText().equals("")) {
+						PretragaTable azurirajPredmeti = new PretragaTable(tabelaPredmet, trenutniTab);
+						azurirajPredmeti.osPredmeti("");
+					}
+				}
+
+				@Override
+				public void changedUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
 		}
 		
 

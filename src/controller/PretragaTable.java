@@ -141,6 +141,17 @@ public class PretragaTable {
 		}
 	}
 	
+	
+	public void osPredmeti(String tekstPretrage) {
+		tabelaPretrage.setRowSorter(rowSorterPredmeti);
+		
+		if(tekstPretrage.trim().length() == 0) {
+			rowSorterPredmeti.setRowFilter(null);
+		}else {
+			rowSorterPredmeti.setRowFilter(RowFilter.regexFilter("(?i)" + tekstPretrage));
+		}
+	}
+	
 	public void pretragaStudenata(String tekstPretrage) {
 		Map<Integer,String>  map = izdvoj("student", tekstPretrage);
 		
