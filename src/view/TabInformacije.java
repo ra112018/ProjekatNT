@@ -3,7 +3,7 @@ package view;
 import javax.swing.JPanel;
 
 import dialogs.DialogIzmeniProfesora;
-import dialogs.DialogIzmeniStudenta;
+//import dialogs.DialogIzmeniStudenta;
 public class TabInformacije extends JPanel{
 
 	/**
@@ -22,11 +22,11 @@ public class TabInformacije extends JPanel{
 	private TabInformacije() {
 		
 		int row = TabProfesor.getInstance().getSelectedRow();
-		int row2=TabStudent.getInstance().getSelectedRow();
+		//int row2=TabStudent.getInstance().getSelectedRow();
 		DialogIzmeniProfesora diagIzmeniProfesora = new DialogIzmeniProfesora(row);
-		DialogIzmeniStudenta diagIzmeniStudenta = new DialogIzmeniStudenta(row2);
+		//DialogIzmeniStudenta diagIzmeniStudenta = new DialogIzmeniStudenta(row2);
 
 		diagIzmeniProfesora.setVisible(true);
-		diagIzmeniStudenta.setVisible(true);
+		//diagIzmeniStudenta.setVisible(true);
 	}
 }

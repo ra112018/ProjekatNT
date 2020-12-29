@@ -1,5 +1,6 @@
 package dialogs;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -15,8 +16,10 @@ import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -25,16 +28,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.MaskFormatter;
 
 import controller.ControllerProfesori;
 import model.BazaProfesora;
 import model.Profesor;
 import view.GlavniProzor;
-import view.TabPredmet;
-import view.TabProfesor;
-import view.TabStudent;
-import view.TabbedPane;
 
 public class DialogIzmeniProfesora extends JDialog {
 
@@ -53,6 +54,7 @@ public class DialogIzmeniProfesora extends JDialog {
 		final JButton potvrdi = new JButton("Potvrdi");
 		potvrdi.setEnabled(false);
 		potvrdi.setPreferredSize(new Dimension(100, 40));
+		potvrdi.setMnemonic('p');
 		
 		JLabel ime = new JLabel("Ime: ");
 		JLabel prezime = new JLabel("Prezime: ");
@@ -79,6 +81,9 @@ public class DialogIzmeniProfesora extends JDialog {
 		addComponent(this, zvanje, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		
 		
+		String[] comboT = { "Dr", "Profesor Dr"};
+		String[] comboZ = {"Redovni profesor", "Vanredni profesor"};
+		
 		final JTextField txtFieldIme = new JTextField(profesor.getImeProf());
 		final JTextField txtFieldPrezime = new JTextField(profesor.getPrezimeProf());
 		final JFormattedTextField txtFieldDatumRodjenja = new JFormattedTextField(getMaskFormatterDate("##-##-####"));
@@ -87,8 +92,11 @@ public class DialogIzmeniProfesora extends JDialog {
 		final JTextField txtFieldEmail = new JTextField(profesor.geteMailAdresaProf());
 		final JTextField txtFieldAdresaKancelarije = new JTextField(profesor.getAdresaKancelarijeProf());
 		final JTextField txtFieldLicnaKarta = new JTextField(profesor.getBrojLicneKarteProf().toString());
-		final JTextField txtFieldTitula = new JTextField(profesor.getTitulaProf());
-		final JTextField txtFieldZvanje = new JTextField(profesor.getZvanjeProf());
+		final JComboBox comboTitula = new JComboBox(comboT);
+		final JComboBox comboZvanje = new JComboBox(comboZ);
+		
+		comboTitula.setBackground(Color.WHITE);
+		comboZvanje.setBackground(Color.WHITE);
 		
 		txtFieldDatumRodjenja.setValue(profesor.getDatumRodjenjaProf());
 		
@@ -153,8 +161,8 @@ public class DialogIzmeniProfesora extends JDialog {
 				// TODO Auto-generated method stub
 				if(!(txtFieldIme.getText().isEmpty() || txtFieldPrezime.getText().isEmpty() ||  
 						txtFieldAdresaStanovanja.getText().isEmpty() || txtFieldBrTelefona.getText().isEmpty() || txtFieldEmail.getText().isEmpty() || 
-						txtFieldAdresaKancelarije.getText().isEmpty() || txtFieldLicnaKarta.getText().isEmpty() || txtFieldTitula.getText().isEmpty() ||
-						txtFieldZvanje.getText().isEmpty())) 
+						txtFieldAdresaKancelarije.getText().isEmpty() || txtFieldLicnaKarta.getText().isEmpty() || ((String)comboTitula.getSelectedItem()).isEmpty() ||
+						((String)comboZvanje.getSelectedItem()).isEmpty())) 
 				{
 					
 					potvrdi.setEnabled(true);
@@ -171,12 +179,43 @@ public class DialogIzmeniProfesora extends JDialog {
 		txtFieldEmail.addFocusListener(myFocusListener);
 		txtFieldAdresaKancelarije.addFocusListener(myFocusListener);
 		txtFieldLicnaKarta.addFocusListener(myFocusListener);
-		txtFieldTitula.addFocusListener(myFocusListener);
-		txtFieldZvanje.addFocusListener(myFocusListener);
+		comboTitula.addFocusListener(myFocusListener);
+		comboZvanje.addFocusListener(myFocusListener);
 		
 		
 		
 		txtFieldLicnaKarta.addKeyListener(myKeyListener);
+		
+		
+		
+		DocumentListener myDocumentListener = new DocumentListener() {
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				boolean valid = isValid(txtFieldEmail.getText());
+				if(!valid) {
+					JOptionPane.showMessageDialog(null, "Niste dobro uneli email!");
+				}
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			
+		};
+		
+		//txtFieldEmail.getDocument().addDocumentListener(myDocumentListener);
+		
 		
 		
 		addComponent(this, txtFieldIme, 1, 0, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
@@ -187,8 +226,8 @@ public class DialogIzmeniProfesora extends JDialog {
 		addComponent(this, txtFieldEmail, 1, 5, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldAdresaKancelarije, 1, 6, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		addComponent(this, txtFieldLicnaKarta, 1, 7, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldTitula, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
-		addComponent(this, txtFieldZvanje, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, comboTitula, 1, 8, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
+		addComponent(this, comboZvanje, 1, 9, 2, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 100.0, 1.0);
 		
 		
 		
@@ -196,6 +235,7 @@ public class DialogIzmeniProfesora extends JDialog {
 		
 		JButton odustani = new JButton("Odustani");
 		odustani.setPreferredSize(new Dimension(100, 40));
+		odustani.setMnemonic('o'); 
 		
 		odustani.addActionListener(new ActionListener(){
 
@@ -230,7 +270,7 @@ public class DialogIzmeniProfesora extends JDialog {
 				
 					
 					ControllerProfesori.getInstance().izmeniProfesora(row, txtFieldIme.getText(), txtFieldPrezime.getText(), DatumRodjenja, txtFieldAdresaStanovanja.getText(), 
-							txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldAdresaKancelarije.getText(), brojLicneKarte, txtFieldTitula.getText(), txtFieldZvanje.getText());
+							txtFieldBrTelefona.getText(), txtFieldEmail.getText(), txtFieldAdresaKancelarije.getText(), brojLicneKarte, (comboTitula.getSelectedItem()).toString(), (comboZvanje.getSelectedItem()).toString());
 					
 					//TabProfesor.getInstance().azurirajPrikaz();
 					
@@ -268,6 +308,21 @@ public class DialogIzmeniProfesora extends JDialog {
 		}
 		return mask;
 	}
+	
+	
+	public static boolean isValid(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    } 
+	
 
 	
 }

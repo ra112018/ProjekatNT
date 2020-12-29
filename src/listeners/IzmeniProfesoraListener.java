@@ -12,9 +12,12 @@ import view.GlavniProzor;
 import view.TabProfesor;
 
 
+
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji */
 
 public class IzmeniProfesoraListener implements ActionListener {
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -32,10 +35,10 @@ public class IzmeniProfesoraListener implements ActionListener {
 			JOptionPane.showMessageDialog(GlavniProzor.getInstance(), "Morate izabrati profesora u tabeli!");
 		}
 		
+		
 	}
-	
-
 	
 	
 
 }
+
