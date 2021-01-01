@@ -111,11 +111,21 @@ public static BazaStudenata instance = null;
 		student.setNepolozeniIspiti(nepolozeniIspiti);
 	}
 
-	public void izmeniStudenta(int row, String imeSt, String przSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, String string, String string2, String string3, String status,
-			String string4, String string5, String string6) {
+	public void izmeniStudenta(int row, String indeks,String imeSt, String przSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
+			String kontaktTelefonSt, String eMailAdresaSt, String godStudija, String status, String godUpisa) {
 		// TODO Auto-generated method stub
 		
+		Student student = BazaStudenata.getInstance().getRow(row);
+		student.setBrIndeksa(indeks);
+		student.setImeSt(imeSt);
+		student.setPrezimeSt(przSt);
+		student.setDatumRodjenjaSt(datumRodjenjaSt);
+		student.setAdresaStanovanjaSt(adresaStanovanjaSt);
+		student.setKontaktTelefonSt(kontaktTelefonSt);
+		student.seteMailAdresaSt(eMailAdresaSt);
+		student.setGodinaUpisa(godUpisa);
+		student.setGodinaStudija(godStudija);
+		student.setStatus(Status.valueOf(status));
 	}
 
 

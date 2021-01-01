@@ -2,9 +2,11 @@ package controller;
 
 import java.util.Date;
 
+import model.BazaProfesora;
 import model.BazaStudenata;
 
 import model.Student;
+import view.TabProfesor;
 import view.TabStudent;
 
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji JTableMVCSimple */
@@ -33,15 +35,7 @@ public class ControllerStudenti {
 		}
 	
 	
-	public void izmeniStudenta(int row, String prezimeSt, String imeSt, Date datumRodjenjaSt, String adresaStanovanjaSt,
-			String kontaktTelefonSt, String eMailAdresaSt, String string, String string2, String string3,
-			String status, String string4, String string5, String string6) {
-		
-		BazaStudenata.getInstance().izmeniStudenta(row, prezimeSt,  imeSt,  datumRodjenjaSt,  adresaStanovanjaSt,
-				kontaktTelefonSt, eMailAdresaSt, string, string2,  string3, status,
-				string4, string5, string6);
-		
-	}
+
 
 	public void dodajStudenta(String indeks, String ime, String prz, Date datumRodjenja, String adresa, String telefon,
 			String email, String godStudija, String status, String godUpisa) {
@@ -49,6 +43,15 @@ public class ControllerStudenti {
 		BazaStudenata.getInstance().dodajStudenta( indeks,  ime, prz, datumRodjenja, 
 		adresa, telefon, email, godStudija,
 		status,godUpisa) ;
+		TabStudent.getInstance().azurirajPrikaz();
+
+	}
+	
+	public void izmeniStudenta(int row,String indeks, String ime, String prz, Date datumRodjenja, String adresa, String telefon,
+			String email, String godStudija, String status, String godUpisa) {
+		// TODO Auto-generated method stub
+		BazaStudenata.getInstance().izmeniStudenta(row,indeks, ime, prz, datumRodjenja, adresa, telefon, email, godStudija, status, godUpisa);
+		
 		TabStudent.getInstance().azurirajPrikaz();
 
 	}

@@ -1,8 +1,6 @@
 package model;
 
-import java.util.Date;
 import java.time.*; 
-import java.time.temporal.*; 
 
 public class Ocena {
 	private Student student;
