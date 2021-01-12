@@ -81,8 +81,8 @@ public class DialogIzmeniProfesora extends JDialog {
 		addComponent(this, zvanje, 0, 9, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, insets, 0.1, 1.0);
 		
 		
-		String[] comboT = { "Dr", "Profesor Dr"};
-		String[] comboZ = {"Redovni profesor", "Vanredni profesor"};
+		String[] comboT = {"PROF_DR", "DR"};
+		String[] comboZ = {"REDOVNI_PROFESOR", "VANREDNI_PROFESOR", "DOCENT"};
 		
 		final JTextField txtFieldIme = new JTextField(profesor.getImeProf());
 		final JTextField txtFieldPrezime = new JTextField(profesor.getPrezimeProf());

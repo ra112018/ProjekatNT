@@ -1,9 +1,13 @@
 package model;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import controller.Serijalizacija;
 
 
 
@@ -38,10 +42,45 @@ public class BazaProfesora {
 	
 	
 	private void initProfesori() {
-		this.profesori = new ArrayList<Profesor>();
-		profesori.add(new Profesor("Mika", "Mikic", "Dr", "Redovni profesor"));
-		profesori.add(new Profesor("Ana", "Anic", "Dr", "Redovni profesor"));
-
+		//this.profesori = new ArrayList<Profesor>();
+		this.profesori = Serijalizacija.getInstance().ucitajProfesore();
+		
+		if(profesori == null) {
+			this.profesori = new ArrayList<Profesor>();
+			
+		profesori.add(new Profesor("Milos", "Nikolic", "PROF_DR", "REDOVNI_PROFESOR"));
+		profesori.add(new Profesor("Nikola", "Mirkovic", "PROF_DR", "REDOVNI_PROFESOR"));
+		profesori.add(new Profesor("Ilija", "Petkovic", "DR", "VANREDNI_PROFESOR"));
+		profesori.add(new Profesor("Mitar", "Petrovic", "DR", "VANREDNI_PROFESOR"));
+		profesori.add(new Profesor("Vasa", "Micic", "DR", "DOCENT"));
+		profesori.add(new Profesor("Srdjan", "Miletic", "DR", "DOCENT"));
+		profesori.add(new Profesor("Branislav", "Mihajlovic", "PROF_DR", "REDOVNI_PROFESOR"));
+		profesori.add(new Profesor("Marko", "Markovic", "PROF_DR", "REDOVNI_PROFESOR"));
+		profesori.add(new Profesor("Milos", "Milakovic", "PROF_DR", "VANREDNI_PROFESOR"));
+		profesori.add(new Profesor("Lazar", "Bratic", "PROF_DR", "VANREDNI_PROFESOR"));
+		profesori.add(new Profesor("Ljeposava", "Drazic", "PROF_DR", "DOCENT"));
+		profesori.add(new Profesor("Miroljub", "Dragic", "PROF_DR", "DOCENT"));
+		profesori.add(new Profesor("Bogdan", "Rekavic", "PROF_DR", "VANREDNI_PROFESOR"));
+		profesori.add(new Profesor("Stanka", "Milic", "PROF_DR", "DOCENT"));
+		profesori.add(new Profesor("Milica", "Vukovic", "PROF_DR", "VANREDNI_PROFESOR"));
+		profesori.add(new Profesor("Misa", "Misic", "PROF_DR", "DOCENT"));
+		profesori.add(new Profesor("Branko", "Maricic", "PROF_DR", "DOCENT"));
+		profesori.add(new Profesor("Branislav", "Lukovic", "PROF_DR", "REDOVNI_PROFESOR"));
+		profesori.add(new Profesor("Branimir", "Obradovic", "PROF_DR", "DOCENT"));
+		
+		
+		String date1 = "12-12-1965";
+		Date Ddate1 = null;
+		try {
+			Ddate1 = new SimpleDateFormat("dd-MM-yyyy").parse(date1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		profesori.add(new Profesor("Milos", "Nikolic", Ddate1, "Temerinska 15, Novi Sad", "021/356-785", "milos.nikolic@mailinator.com", "Dositeja Obradovica 6, Novi Sad, NTP 600", 123123123, "PROF_DR", "REDOVNI_PROFESOR"));
+		
+		
+		}
 	}
 	
 	

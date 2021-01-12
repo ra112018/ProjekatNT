@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import controller.Serijalizacija;
 import model.Student.Status;
 
 
@@ -39,10 +40,14 @@ public static BazaStudenata instance = null;
 
 	
 	private void initStudenti() {
-		this.studenti = new ArrayList<Student>();
+		//this.studenti = new ArrayList<Student>();
+		this.studenti = Serijalizacija.getInstance().ucitajStudente();
+		
+		if(studenti == null) {
 		studenti.add(new Student("Pera","Perić","RA-1-2017", "prva", "B", 8.16));
 		studenti.add(new Student("Marković", "Marko","RA-2-2017", "četvrta", "S" , 7.17));
 
+		}
 	}
 	
 	

@@ -3,10 +3,18 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import controller.Serijalizacija;
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
 
 
 
@@ -56,6 +64,30 @@ public class GlavniProzor extends JFrame{
 		
 		StatusBar statusBar = new StatusBar();
 		getContentPane().add(statusBar,BorderLayout.SOUTH);
+		
+		if(Serijalizacija.getInstance().getDetektorUspesnogUcitavanja() == true) {
+			JOptionPane.showMessageDialog(this, "Svi podaci uspesno ucitani");
+		}else {
+			JOptionPane.showMessageDialog(this, "Neki podaci nisu uspesno ucitani");
+		}
+		
+		
+		this.addWindowListener( new WindowAdapter()
+		{
+		    public void windowClosing(WindowEvent e)
+		    {
+		        JFrame frame = (JFrame)e.getSource(); 
+		 
+		        int result = JOptionPane.showConfirmDialog(frame,"Da li zelite da sacuvate podatke?","Izlaz iz aplikacije",JOptionPane.YES_NO_OPTION);
+		        if (result == 0) {
+		        	Serijalizacija.getInstance().sacuvajPodatke(BazaStudenata.getInstance().getStudent(), BazaProfesora.getInstance().getProfesor(), BazaPredmeta.getInstance().getPredmet());
+		       
+		        }
+		        else {
+		        	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		        }
+		    }
+		});
 	}
 	
 	private void MenuBarInicijalizacija() {

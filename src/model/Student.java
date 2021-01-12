@@ -1,9 +1,10 @@
 package model;
 
 import java.util.List;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student {
+public class Student implements Serializable{
 
 	private String brIndeksa;
 	private String prezimeSt;

@@ -1,11 +1,12 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Profesor {
+public class Profesor implements Serializable{
 	
 	
 	private String prezimeProf;
