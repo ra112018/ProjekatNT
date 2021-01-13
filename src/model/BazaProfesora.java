@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import controller.Serijalizacija;
@@ -144,6 +145,20 @@ public class BazaProfesora {
 		profesor.setBrojLicneKarteProf(brojLicneKarte);
 		profesor.setTitulaProf(titula);
 		profesor.setZvanjeProf(zvanje);
+		
+	}
+
+	public void obrisiProfesora(Profesor profesor) {
+		
+		
+		Iterator<Profesor> iter = this.profesori.listIterator();
+		
+		while(iter.hasNext()) {
+			Profesor p = iter.next();
+			if(p == profesor) {
+				iter.remove();
+			}
+		}
 		
 	}
 	

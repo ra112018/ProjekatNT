@@ -4,7 +4,11 @@ package controller;
 import java.util.Date;
 
 import model.BazaProfesora;
+import model.BazaStudenata;
+import model.Student;
+import model.Profesor;
 import view.TabProfesor;
+import view.TabStudent;
 
 /**REFERENCA: Radjeno po uzoru na Vezbe Dogadjaji JTableMVCSimple */
 
@@ -36,6 +40,14 @@ public class ControllerProfesori {
 			String titula, String zvanje) {
 		
 		BazaProfesora.getInstance().izmeniProfesora(row, ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa, adresaKancelarije, brojLicneKarte, titula, zvanje);
+		
+		TabProfesor.getInstance().azurirajPrikaz();
+		
+	}
+
+	public void obrisiProfesora(int selectedRow) {
+		Profesor profesor = BazaProfesora.getInstance().getRow(selectedRow);
+		BazaProfesora.getInstance().obrisiProfesora(profesor);
 		
 		TabProfesor.getInstance().azurirajPrikaz();
 		

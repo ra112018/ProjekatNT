@@ -29,6 +29,7 @@ import listeners.DodajStudentaListener;
 import listeners.ObrisiStudentaListener;
 import listeners.DodajPredmetListener;
 import listeners.IzmeniPredmetListener;
+import listeners.ObrisiProfesoraListener;
 
 public class ToolBar extends JToolBar {
 		
@@ -144,7 +145,8 @@ public class ToolBar extends JToolBar {
 			btnDodaj.addActionListener(new DodajProfesoraListener());
 			btnIzmena.addActionListener(new IzmeniProfesoraListener());
 			
-			
+			btnBrisanje.addActionListener(new ObrisiProfesoraListener());
+
 			
 			searchInput.addKeyListener(new KeyAdapter() {
 				
