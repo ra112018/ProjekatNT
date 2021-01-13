@@ -24,6 +24,16 @@ public class ControllerProfesori {
 	}
 	
 	private ControllerProfesori() {}
+
+	
+	public boolean daLiProfesorPostojiProvera(Integer brojLicneKarte) {
+			for(Profesor p : BazaProfesora.getInstance().getProfesor()) {
+				if(p.getBrojLicneKarteProf()==brojLicneKarte) {
+					return true;
+				}
+			}
+			return false;
+		}
 	
 	
 	public void dodajProfesora(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, 

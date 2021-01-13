@@ -142,6 +142,11 @@ public class DialogBrisanje extends JDialog{
 					TabStudent.getInstance().azurirajPrikaz();
 					dispose();
 				}
+				else if(brisemo.equals("profesor")) {
+					ControllerProfesori.getInstance().obrisiProfesora(index);
+					TabProfesor.getInstance().azurirajPrikaz();
+					dispose();
+				}
 			}
 		});
 		
