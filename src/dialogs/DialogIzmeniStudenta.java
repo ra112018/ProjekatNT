@@ -6,7 +6,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +20,6 @@ import java.util.Date;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -50,20 +48,21 @@ public class DialogIzmeniStudenta extends JDialog {
 	
 	public DialogIzmeniStudenta(final int row) {
 		
-		
 		super(GlavniProzor.getInstance(), "Izmeni studenta", true);
 		this.setLayout(new GridBagLayout());
 		Student student = BazaStudenata.getInstance().getRow(row);
 		setSize(500,500);
+		
 
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new GridBagLayout());
-
+		panel1.setSize(400,400);
+		
 		tabbedPane.addTab("Informacije", panel1);
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-
+		
 		JPanel panel2 = new JPanel();
 		tabbedPane.addTab("Polozeni", panel2);
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
@@ -71,10 +70,10 @@ public class DialogIzmeniStudenta extends JDialog {
 		JPanel panel3 = new JPanel();
 		tabbedPane.addTab("Nepolozeni",panel3);
 		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
-		
+
 		this.add(tabbedPane);		/** REFERENCA : https://www.youtube.com/watch?v=76Cx3K66u5c**/
 	      
-	      
+	    tabbedPane.setLocation(100,0);
 		final JButton potvrdi = new JButton("Potvrdi");
 		potvrdi.setEnabled(false);
 		potvrdi.setPreferredSize(new Dimension(100, 40));

@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JTable;
+
 import controller.Serijalizacija;
 import model.Student.Status;
 
@@ -37,19 +39,46 @@ public static BazaStudenata instance = null;
 		this.kolone.add("Prosek");
 
 	}
-
 	
 	private void initStudenti() {
 		//this.studenti = new ArrayList<Student>();
 		this.studenti = Serijalizacija.getInstance().ucitajStudente();
 		
 		if(studenti == null) {
-		studenti.add(new Student("Pera","Perić","RA-1-2017", "prva", "B", 8.16));
-		studenti.add(new Student("Marković", "Marko","RA-2-2017", "četvrta", "S" , 7.17));
+
+			this.studenti = new ArrayList<Student>();
+			
+		studenti.add(new Student("Marko", "Milosević", "RA 2/2020", "prva", "B", 0));
+		studenti.add(new Student("Marija", "Milić", "RA 3/2019", "druga", "S", 10.00));
+		studenti.add(new Student("Nikola", "Nikolić", "RA 3/2017", "prva", "B", 9.00));
+		studenti.add(new Student("Pera","Peric","RA 134/2015","treća","S",0));
+		studenti.add(new Student("Sofija","Ilic","RA 5/2015","treća","B",0));
+		studenti.add(new Student("Martina","Lukic","RA 8/2018","treća","S",0));
+		studenti.add(new Student("Stojan","Stojakovic","RA 10/2017","prva","B",0));
+		studenti.add(new Student("Milan","Milanovic","RA 12/2017","druga","S",0));
+		studenti.add(new Student("Miroslav","Milic","RA 16/2019","druga","B",0));
+		studenti.add(new Student("Stefan","Gojic","RA 21/2015","treća","S",0));
+		studenti.add(new Student("Anastasija","Jokic","RA 9/2020","treća","B",0));
+		studenti.add(new Student("Bogdan","Bogdanovic","RA 4/2017","treća","S",0));
+		studenti.add(new Student("Ana","Dabovic","RA 30/2019","prva","B",0));
+		studenti.add(new Student("Mika","Mikic","RA 1/2020","prva","S",0));
+		studenti.add(new Student("Jovan","Deretic","RA 11/2018","četvrta","B",9.50));
+		studenti.add(new Student("Nikola","Miskovic","RA 12/2018","četvrta","S",9.00));
+		studenti.add(new Student("Martin","Stojanovic","RA 13/2018","četvrta","S",0));
+		studenti.add(new Student("Tomislav","Novakovic","RA 14/2018","četvrta","B",0));
+		studenti.add(new Student("Lena","Ivic","RA 154/2016","četvrta","B",0));
+		studenti.add(new Student("Jovan","Lazic","RA 23/2020","prva","B",0));
+		studenti.add(new Student("Isidora","Mikic","RA 1/2019","druga","B",0));
+		studenti.add(new Student("Vladimir","Ilic","SW 4/2014","četvrta","B",0));
+		studenti.add(new Student("Mirko","Alicic","SW 17/2015","četvrta","S",0));
+		studenti.add(new Student("Milisav","Perkovic","SW 17/2016","četvrta","S",0));
+		studenti.add(new Student("Purisa","Djordjevic","SW 27/2018","druga","B",0));
+		studenti.add(new Student("Mikica","Kovacevic","RA 226/2017","treća","S",0));
+		studenti.add(new Student("Miloš","Milić","SW 12/2020","prva","S",0));
+
 
 		}
 	}
-	
 	
 	public List<Student> getStudent() {
 		return studenti;

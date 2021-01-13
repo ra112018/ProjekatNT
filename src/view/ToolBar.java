@@ -27,6 +27,8 @@ import listeners.IzmeniStudentaListener;
 import listeners.ObrisiPredmetListener;
 import listeners.DodajStudentaListener;
 import listeners.ObrisiStudentaListener;
+import listeners.DodajPredmetListener;
+import listeners.IzmeniPredmetListener;
 
 public class ToolBar extends JToolBar {
 		
@@ -189,6 +191,11 @@ public class ToolBar extends JToolBar {
 			});
 			
 		}else if (trenutniTab==2) {
+
+			btnDodaj.addActionListener(new DodajPredmetListener());
+			btnIzmena.addActionListener(new IzmeniPredmetListener());
+			
+			
 			btnBrisanje.addActionListener(new ObrisiPredmetListener());
 			
 			searchInput.addKeyListener(new KeyAdapter() {

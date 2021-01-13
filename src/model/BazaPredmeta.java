@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import controller.Serijalizacija;
@@ -115,6 +116,24 @@ public class BazaPredmeta {
 		default:
 			return null;
 		}
+	}
+	public void dodajPredmet(String sifra, String naziv, String brojBodova, int godinaStudija, 
+			String semestar) {
+		
+		this.predmeti.add(new Predmet(sifra, naziv, brojBodova, godinaStudija,semestar));
+	}
+	
+	public void izmeniPredmet(int row,String sifra,String naziv, String brojBodova, int godinaStudija, 
+			String semestar) {
+		
+		Predmet predmet = BazaPredmeta.getInstance().getRow(row);
+		
+		predmet.setSifraPredmeta(sifra);
+		predmet.setNazivPredmeta(naziv);
+		predmet.setBrojESPB(brojBodova);
+		predmet.setGodinaStudija(godinaStudija);
+		predmet.setSemestar(semestar);
+		
 	}
 	
 	public void brisanjePredmeta(Predmet predmet) {
